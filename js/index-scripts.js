@@ -35,8 +35,8 @@ function doLogin() {
                 FirstName = jsonObject.FirstName; // Corrected variable names
                 LastName = jsonObject.LastName; // Corrected variable names
                 sessionStorage.setItem("UserID", UserID);
-                sessionStorage.setItem("userFirstName", FirstName); // Corrected variable names
-                sessionStorage.setItem("userLastName", LastName); // Corrected variable names
+                sessionStorage.setItem("FirstName", FirstName); // Corrected variable names
+                sessionStorage.setItem("LastName", LastName); // Corrected variable names
 
                 if (UserID < 1) {
                     document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
