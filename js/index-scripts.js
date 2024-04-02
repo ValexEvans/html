@@ -1,75 +1,60 @@
-//import * as functions from './fuctions-scripts.js';
-//const otherFile = require('./fuctions-scripts.js');
-
-
-// const urlBase = "chompersphonebook.xyz";
 const urlBase = "143.198.135.118";
 const extension = "php";
 
 var UserID = 0;
-let userFirstName = "";
-let userLastName = "";
-
-let contactSearchList = [];
-let contactList = [];
-
-
+let FirstName = ""; // Corrected variable names
+let LastName = "";
 
 function doLogin() {
-    //generateHtmlContent(); // This function is not defined in the provided code snippet. Make sure it exists or remove this line.
-
-    // Resetting global variables which are not declared in the provided code snippet. 
     UserID = 0;
-    FirstName = "";
+    FirstName = ""; // Corrected variable names
     LastName = "";
 
-    // Getting login name and password from input fields.
     let login = document.getElementById("loginName").value;
     let password = document.getElementById("loginPassword").value;
 
     console.log("user/pass= " + login);
     console.log(password);
 
-    document.getElementById("loginResult").innerHTML = ""; // Clearing any previous login result message.
+    document.getElementById("loginResult").innerHTML = "";
 
     let tmp = { login: login, password: password };
-    let jsonPayload = JSON.stringify(tmp); // Converting data to JSON format for sending to server.
+    let jsonPayload = JSON.stringify(tmp);
 
-    let url = "http://" + urlBase + "/api/Login." + extension; // Constructing URL for login API endpoint.
+    let url = "http://" + urlBase + "/api/Login." + extension;
 
-    let xhr = new XMLHttpRequest(); // Creating XMLHttpRequest object.
-    xhr.open("POST", url, true); // Opening POST request to the specified URL asynchronously.
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8"); // Setting request header.
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
     try {
         xhr.onreadystatechange = async function () {
             if (this.readyState == 4 && this.status == 200) {
-                let jsonObject = JSON.parse(xhr.responseText); // Parsing response JSON.
-                UserID = jsonObject.id; // Assuming server responds with user ID.
-                userFirstName = jsonObject.FirstName; // Assuming server responds with first name.
-                userLastName = jsonObject.LastName; // Assuming server responds with last name.
-                sessionStorage.setItem("UserID", UserID); // Storing user ID in session storage.
-                sessionStorage.setItem("userFirstName", userFirstName); // Storing first name in session storage.
-                sessionStorage.setItem("userLastName", userLastName); // Storing last name in session storage.
+                let jsonObject = JSON.parse(xhr.responseText);
+                UserID = jsonObject.id;
+                FirstName = jsonObject.FirstName; // Corrected variable names
+                LastName = jsonObject.LastName; // Corrected variable names
+                sessionStorage.setItem("UserID", UserID);
+                sessionStorage.setItem("userFirstName", FirstName); // Corrected variable names
+                sessionStorage.setItem("userLastName", LastName); // Corrected variable names
 
-                if (UserID < 1) { // Assuming UserID less than 1 indicates authentication failure.
+                if (UserID < 1) {
                     document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
                     return;
                 }
 
-                saveCookie(); // Assuming this function saves user data in a cookie.
-                const getContactsResult = await getContacts(""); // Assuming this function fetches user contacts.
-                console.log(getContactsResult); // Logging contacts fetched from server.
-                window.location.href = "landing.html"; // Redirecting user to landing page after successful login.
-                console.log("cookie on landing= " + document.cookie); // Logging cookies after redirection.
+                saveCookie();
+                const getContactsResult = await getContacts("");
+                console.log(getContactsResult);
+                window.location.href = "landing.html";
+                console.log("cookie on landing= " + document.cookie);
             }
         };
-        xhr.send(jsonPayload); // Sending JSON data to server.
+        xhr.send(jsonPayload);
     } catch (err) {
-        document.getElementById("loginResult").innerHTML = err.message; // Handling errors and displaying error message.
+        document.getElementById("loginResult").innerHTML = err.message;
     }
 }
-
 
 function saveCookie() {
     let minutes = 500;
@@ -109,7 +94,6 @@ function readCookie() {
         //document.getElementById("userName").innerHTML = "Logged in as " + FirstName + " " + LastName;
     }
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const root = document.getElementById('root');
@@ -172,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <input class="input" type="text" placeholder="Username">
               <input class="input" type="text" placeholder="Email">
               <input class="input" type="password" placeholder="Password">
-              <button onclick="doLogin(); id="registerButton" class="button">Register</button>
+              <button onclick="doLogin();" id="registerButton" class="button">Register</button> <!-- Fixed onclick attribute -->
               <p class="toggleText">Already have an account? <a id="loginLink" href="#">Login</a></p>
             </div>
           </div>
@@ -182,5 +166,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   renderPage();
 });
-
-
