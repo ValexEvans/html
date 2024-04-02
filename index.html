@@ -1,70 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login and Signup Page</title>
-    <link rel="stylesheet" href="css/index-styles.css">
-    <script src="js/scripts.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="/css/index-styles.css">
 </head>
-
 <body>
-
-    <div class="container">
-        <button class="button" onclick="openPopup('loginPopup')">Login</button>
-        <button class="button" onclick="openPopup('signupPopup')">Sign Up</button>
-    </div>
-
-    <!-- Login Popup -->
-    <div id="loginPopup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup('loginPopup')">&times;</span>
-            <h2>Login</h2>
-            <form>
-                <label for="loginName">Name:</label>
-                <input className="ele" type="text" id="loginName" required>
-                <br>
-                <label for="loginPassword">Password:</label>
-                <input className="ele" type="password" id="loginPassword" required>
-                <br>
-                <button type="submit" onclick="doLogin();">Login</button>
-                <span id="loginResult"></span>
-            </form>
-        </div>
-    </div>
-
-    <!-- Signup Popup -->
-    <div id="signupPopup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup('signupPopup')">&times;</span>
-            <h2>Sign Up</h2>
-            <form>
-                <label for="firstName">First Name:</label>
-                <input className="ele" type="text" id="registerFirstName" required>
-                <br>
-                <label for="lastName">Last Name:</label>
-                <input className="ele" type="text" id="registerLastName" required>
-                <br>
-                <label for="userName">Username:</label>
-                <input className="ele" type="text" id="registerLogin" required>
-                <br>
-                <label for="signupEmail">Email:</label>
-                <input type="email" id="signupEmail" required>
-                <br>
-                <label for="signupPassword">Password:</label>
-                <input className="ele" type="password" id="registerPassword" required>
-                <br>
-                <label for="signupRole">Role:</label>
-                <input type="text" id="signupRole" required>
-                <br>
-                <button onclick="doRegister();" type="submit">Sign Up</button>
-                <span id="registerResult"></span>
-            </form>
-        </div>
-    </div>
-
-    
+  <div id="root"></div>
+  <script src="/js/scripts1.js"></script>
 </body>
-
 </html>
