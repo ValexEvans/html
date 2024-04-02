@@ -1,4 +1,4 @@
-const urlBase = "https://143.198.135.118";
+const urlBase = "143.198.135.118";
 const extension = "php";
 
 function doLogin() {
