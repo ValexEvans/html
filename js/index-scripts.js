@@ -1,5 +1,5 @@
 //import * as functions from './fuctions-scripts.js';
-const otherFile = require('./fuctions-scripts.js');
+//const otherFile = require('./fuctions-scripts.js');
 
 document.addEventListener("DOMContentLoaded", function () {
   const root = document.getElementById('root');
