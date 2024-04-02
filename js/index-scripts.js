@@ -24,7 +24,7 @@ function doLogin() {
     xhr.onload = async function () {
         if (this.readyState == 4 && this.status == 200) {
             const jsonObject = JSON.parse(xhr.responseText);
-            userData.UserID = jsonObject.id;
+            userData.UserID = jsonObject.UserID;
             userData.FirstName = jsonObject.FirstName;
             userData.LastName = jsonObject.LastName;
 
