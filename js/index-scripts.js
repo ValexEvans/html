@@ -1,5 +1,5 @@
 //const urlBase = "138.197.67.189";
-const urlBase = "chompersphonebook.xyz";
+const urlBase = "http://143.198.135.118";
 const extension = "php";
 
 var UserID = 0;
@@ -41,7 +41,7 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				UserID = jsonObject.id;
+				UserID = jsonObject.UserID;
 				userFirstName = jsonObject.FirstName;
 				userLastName = jsonObject.LastName;
 				sessionStorage.setItem('UserID', UserID);
