@@ -3,6 +3,7 @@
 $inData = getRequestInfo();
 
 $OrganizerID = 0;
+$EventID = 0;
 $EventName = "";
 $Category = "";
 $Description = "";
@@ -31,10 +32,13 @@ if ($conn->connect_error) {
     $stmt->bind_param("ssssssssi", $EventName, $Category, $Description, $Time, $Date, $Location, $ContactPhone, $Visibility, $OrganizerID);
     $stmt->execute();
 
+    // Get the EventID of the newly added event
+    $EventID = $stmt->insert_id;
+
     $stmt->close();
     $conn->close();
 
-    returnWithInfo("Event added successfully");
+    returnWithInfo("Event added successfully", $EventID);
 }
 
 function getRequestInfo()
@@ -54,9 +58,9 @@ function returnWithError($err)
     sendResultInfoAsJson($retValue);
 }
 
-function returnWithInfo($info)
+function returnWithInfo($info, $eventID)
 {
-    $retValue = array("info" => $info);
+    $retValue = array("info" => $info, "event_id" => $eventID);
     sendResultInfoAsJson($retValue);
 }
 
