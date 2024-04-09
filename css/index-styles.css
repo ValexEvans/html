@@ -1,5 +1,3 @@
-
-
 /* Styles for login page */
 body {
     margin: 0;
@@ -10,7 +8,6 @@ body {
 .active {
     display: block;
 }
-
 .inactive {
     display: none;
 }
