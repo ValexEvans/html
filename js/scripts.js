@@ -70,8 +70,8 @@ function doRegister() {
 	};
 
 	UserID = 0;
-	FirstName = "";
-	LastName = "";
+	firstName = "";
+	fastName = "";
 
 	let jsonPayload = JSON.stringify(userData);
 
@@ -84,7 +84,7 @@ function doRegister() {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
-				UserID = jsonObject.UserID;
+				UserID = jsonObject.id;
 
 				if (UserID < 1) {
 					document.getElementById("registerResult").innerHTML = "Failed to register user.";
