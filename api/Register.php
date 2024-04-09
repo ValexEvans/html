@@ -16,9 +16,11 @@
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            returnWithInfo("User registered successfully.");
+            // Retrieve the UserID of the newly inserted user
+            $UserID = $stmt->insert_id;
+            returnWithInfo("id", $UserID);
         } else {
-            returnWithError("Failed to register user.");
+            returnWithError("0");
         }
 
         $stmt->close();
@@ -39,9 +41,10 @@
         sendResultInfoAsJson($retValue);
     }
     
-    function returnWithInfo($info) {
-        $retValue = '{"info":"' . $info . '"}';
+    function returnWithInfo($info, $UserID) {
+        $retValue = '{"UserID":' . $UserID . ', "info":"' . $info . '"}';
         sendResultInfoAsJson($retValue);
     }
     
 ?>
+
