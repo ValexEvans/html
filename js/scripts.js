@@ -99,7 +99,7 @@ function doRegister() {
 				document.getElementById("registerResult").innerHTML = "User registered successfully.";
 
 				// Optionally, you can redirect the user to the login page after successful registration
-				window.location.href = "landing.html";
+				window.location.reload();
 			}
 		};
 		xhr.send(jsonPayload);
