@@ -5,7 +5,8 @@ $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
-    $EventID = $_GET["EventID"];
+    $requestData = json_decode(file_get_contents('php://input'), true);
+    $EventID = $requestData["EventID"];
 
     $stmt = $conn->prepare("SELECT * FROM Events WHERE EventID = ?");
     $stmt->bind_param("i", $EventID);
