@@ -17,8 +17,8 @@
 
         if ($stmt->affected_rows > 0) {
             // Retrieve the UserID of the newly inserted user
-            $userID = $stmt->insert_id;
-            returnWithInfo("User registered successfully.", $userID);
+            $UserID = $stmt->insert_id;
+            returnWithInfo("User registered successfully.", $UserID);
         } else {
             returnWithError("0");
         }
@@ -41,8 +41,8 @@
         sendResultInfoAsJson($retValue);
     }
     
-    function returnWithInfo($info, $userID) {
-        $retValue = '{"UserID":' . $userID . ', "info":"' . $info . '"}';
+    function returnWithInfo($info, $UserID) {
+        $retValue = '{"UserID":' . $UserID . ', "info":"' . $info . '"}';
         sendResultInfoAsJson($retValue);
     }
     
