@@ -60,7 +60,7 @@ function returnWithError($err)
 
 function returnWithInfo($info, $eventID)
 {
-    $retValue = array("info" => $info, "event_id" => $eventID);
+    $retValue = array("info" => $info, "EventID" => $eventID);
     sendResultInfoAsJson($retValue);
 }
 
