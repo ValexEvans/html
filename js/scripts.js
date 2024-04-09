@@ -58,6 +58,57 @@ function doLogin()
 
 }
 
+function doRegister() {
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
+	
+	let firstName = document.getElementById("registerFirstName").value;
+	let lastName = document.getElementById("registerLastName").value;
+	let login = document.getElementById("registerLogin").value;
+	let password = document.getElementById("registerPassword").value;
+	// var hash = md5(password);
+
+	document.getElementById("registerResult").innerHTML = "";
+
+	let userData = {
+		FirstName: firstName,
+		LastName: lastName,
+		login: login,
+		password: password
+		// password: hash
+	};
+
+	let jsonPayload = JSON.stringify(userData);
+
+	let url = urlBase + '/Register.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+				UserID = jsonObject.UserID;
+
+				if (UserID < 1) {
+					document.getElementById("registerResult").innerHTML = "Failed to register user.";
+					return;
+				}
+
+				document.getElementById("registerResult").innerHTML = "User registered successfully.";
+
+				// Optionally, you can redirect the user to the login page after successful registration
+				window.location.href = "index.html";
+			}
+		};
+		xhr.send(jsonPayload);
+	} catch(err) {
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+}
+
 function saveCookie()
 {
 	let minutes = 20;
