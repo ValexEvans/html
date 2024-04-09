@@ -69,6 +69,10 @@ function doRegister() {
 		password: password
 	};
 
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
+
 	let jsonPayload = JSON.stringify(userData);
 
 	let url = urlBase + '/Register.' + extension;
@@ -87,7 +91,7 @@ function doRegister() {
 					return;
 				}
 
-				document.getElementById("registerResult").innerHTML = "User registered successfully.";
+				// document.getElementById("registerResult").innerHTML = "User registered successfully.";
 
 				// Optionally, you can redirect the user to the login page after successful registration
 				window.location.reload();
