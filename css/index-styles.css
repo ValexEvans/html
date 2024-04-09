@@ -5,12 +5,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: rgb(158, 156, 156);
 }
-.active {
-    display: block;
-}
-.inactive {
-    display: none;
-}
+
 .container {
     display: flex;
     align-items: center;
