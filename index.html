@@ -7,7 +7,13 @@
     <title>Turntable</title>
     <link rel="stylesheet" href="/css/index-styles.css">
     <style>
+        .active {
+            display: block;
+        }
 
+        .inactive {
+            display: none;
+        }
     </style>
 </head>
 
@@ -16,13 +22,14 @@
         <div class="container">
             <div class="login-container">
                 <h1 class="title">Turntable</h1>
-                <div class="form-group active" id="loginForm" >
+                <div class="form-group active" id="loginForm">
                     <input id="loginName" class="input" type="text" placeholder="Username">
                     <input id="loginPassword" class="input" type="password" placeholder="Password">
                     <button id="loginButton" class="button" onclick="doLogin();">Login</button>
                     <span id="loginResult"></span>
-                    <p class="toggleText">Don't have an account yet? <button onclick="switchContent()">Register</button></p>
-                    
+                    <p class="toggleText">Don't have an account yet? <button onclick="switchContent()">Register</button>
+                    </p>
+
                 </div>
                 <div class="form-group inactive" id="registerForm">
                     <input class="input" type="text" placeholder="First Name">
@@ -32,7 +39,7 @@
                     <input class="input" type="password" placeholder="Password">
                     <button id="registerButton" class="button">Register</button>
                     <p class="toggleText">Already have an account? <button onclick="switchContent()">Login</button></p>
-                    
+
                 </div>
             </div>
         </div>
