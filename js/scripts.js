@@ -8,7 +8,7 @@ let LastName = "";
 // Function to call the PHP script and handle the response
 function checkUserRole(UserID) {
     // URL of the PHP script
-    const url = 'http://your_domain.com/UserRole.php';
+    const url = 'http://143.198.135.118/UserRole.php';
 
     // Data to send in the POST request
     const data = {
