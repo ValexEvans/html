@@ -33,13 +33,13 @@ function sendResultInfoAsJson($obj)
 
 function returnWithError($err)
 {
-    $retValue = '{"error":"' . $err . '"}';
+    $retValue = array("error" => $err);
     sendResultInfoAsJson($retValue);
 }
 
 function returnWithInfo($info)
 {
-    $retValue = '{"role":"' . $info . '"}';
+    $retValue = array("role" => $info);
     sendResultInfoAsJson($retValue);
 }
 
