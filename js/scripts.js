@@ -5,6 +5,53 @@ let UserID = 0;
 let FirstName = "";
 let LastName = "";
 
+// Function to call the PHP script and handle the response
+function checkUserRole(UserID) {
+    // URL of the PHP script
+    const url = 'http://your_domain.com/UserRole.php';
+
+    // Data to send in the POST request
+    const data = {
+        UserID: UserID
+    };
+
+    // Options for the fetch request
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    // Make the fetch request
+    fetch(url, options)
+    .then(response => response.json())
+    .then(data => {
+        // Check the role received from the PHP script
+        const role = data.role;
+        // Redirect the user based on the role
+        switch (role) {
+            case 'Student':
+                window.location.href = 'student_landing_page.html';
+                break;
+            case 'Admin':
+                window.location.href = 'admin_landing_page.html';
+                break;
+            case 'SuperAdmin':
+                window.location.href = 'superadmin_landing_page.html';
+                break;
+            default:
+                // Handle any unexpected response
+                console.error('Unexpected role:', role);
+                break;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 function doLogin() {
 	UserID = 0;
 	FirstName = "";
@@ -40,8 +87,8 @@ function doLogin() {
 				LastName = jsonObject.LastName;
 
 				saveCookie();
-
-				window.location.href = "landing.html";
+				checkUserRole(UserID);
+				
 			}
 		};
 		xhr.send(jsonPayload);
