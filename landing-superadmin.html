@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="/css/landing-styles.css">
+    <script src="/js/scripts.js"></script>
+
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <header>
+        <h1>University Event Hub</h1>
+        <p>Solving the problem of scattered event systems</p>
+    </header>
+    <div class="navbar">
+        <!-- Navbar here -->
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showContent('home', event)">Home</a></li>
+                <li><a href="#" onclick="showContent('events', event)">Events</a></li>
+                <li><a href="#" onclick="showContent('rso', event)">RSOs</a></li>
+                <li><a href="#" onclick="showContent('comments', event)">Comments</a></li>
+                <li><a href="#" onclick="showContent('ratings', event)">Ratings</a></li>
+                <li><a href="#" onclick="doLogout()">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    <section class="features">
+        <div id="home" class="feature">
+            <h2>Current Events</h2>
+            <p>List of Events with information and ability to comment and rate</p>
+        </div>
+        <div id="events" class="feature" style="display: none;">
+            <h2>Create Event</h2>
+            <form action="submit_event.php" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="category">Category:</label><br>
+                <input type="text" id="category" name="category" required><br><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+
+                <label for="time">Time:</label><br>
+                <input type="time" id="time" name="time" required><br><br>
+
+                <label for="date">Date:</label><br>
+                <input type="date" id="date" name="date" required><br><br>
+
+                <label for="location">Location:</label><br>
+                <input type="text" id="location" name="location" required><br><br>
+
+                <label for="contactPhone">Contact Phone:</label><br>
+                <input type="tel" id="contactPhone" name="contactPhone" required><br><br>
+
+                <label for="visibility">Visibility:</label><br>
+                <select id="visibility" name="visibility" required>
+                    <option value="Public">Public</option>
+                    <option value="Private">Private</option>
+                </select><br><br>
+                <select id="visibility" name="visibility" required>
+                    <option value="isRSOEvent">Registered Student Organization Event</option>
+                    <option value="notRSOEvent">Unregistered Student Organization Event</option>
+                </select><br><br>
+                <label for="organizerID">Organizer ID:</label><br>
+                <input type="number" id="organizerID" name="organizerID" required><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div id="rso" class="feature" style="display: none;">
+            <h2>Registered Student Organizations</h2>
+            <form action="submit_event.php" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="organizerID">Organizer ID:</label><br>
+                <input type="number" id="organizerID" name="organizerID" required><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div id="comments" class="feature" style="display: none;">
+            <h2>Comments</h2>
+            <p>Content for Comments section.</p>
+        </div>
+        <div id="ratings" class="feature" style="display: none;">
+            <h2>Ratings</h2>
+            <p>Content for Ratings section.</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 University Event Hub</p>
+    </footer>
+    <script>
+        // const urlBase = "143.198.135.118";
+        // const extension = "php";
+
+        // Include your JavaScript code here
+
+        function showContent(contentId, event) {
+            event.preventDefault(); // Prevent default behavior of anchor tag
+            const features = document.querySelectorAll('.feature');
+            features.forEach(feature => {
+                if (feature.id === contentId) {
+                    feature.style.display = 'block';
+                } else {
+                    feature.style.display = 'none';
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

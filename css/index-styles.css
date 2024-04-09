@@ -63,3 +63,9 @@ body {
     align-self: center;
     color: white;
 }
+.active {
+    display: block;
+}
+.inactive {
+    display: none;
+}
