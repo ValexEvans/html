@@ -5,52 +5,52 @@ let UserID = 0;
 let FirstName = "";
 let LastName = "";
 
-// function doLogin() {
-// 	UserID = 0;
-// 	FirstName = "";
-// 	LastName = "";
+function doLogin() {
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
 
-// 	let login = document.getElementById("loginName").value;
-// 	let password = document.getElementById("loginPassword").value;
-// 	//	var hash = md5( password );
+	let login = document.getElementById("loginName").value;
+	let password = document.getElementById("loginPassword").value;
+	//	var hash = md5( password );
 
-// 	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
-// 	let tmp = { login: login, password: password };
-// 	//	var tmp = {login:login,password:hash};
-// 	let jsonPayload = JSON.stringify(tmp);
+	let tmp = { login: login, password: password };
+	//	var tmp = {login:login,password:hash};
+	let jsonPayload = JSON.stringify(tmp);
 
-// 	let url = urlBase + '/Login.' + extension;
+	let url = urlBase + '/Login.' + extension;
 
-// 	let xhr = new XMLHttpRequest();
-// 	xhr.open("POST", url, true);
-// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-// 	try {
-// 		xhr.onreadystatechange = function () {
-// 			if (this.readyState == 4 && this.status == 200) {
-// 				let jsonObject = JSON.parse(xhr.responseText);
-// 				UserID = jsonObject.UserID;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+				UserID = jsonObject.UserID;
 
-// 				if (UserID < 1) {
-// 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-// 					return;
-// 				}
+				if (UserID < 1) {
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
 
-// 				FirstName = jsonObject.FirstName;
-// 				LastName = jsonObject.LastName;
+				FirstName = jsonObject.FirstName;
+				LastName = jsonObject.LastName;
 
-// 				saveCookie();
+				saveCookie();
 
-// 				window.location.href = "landing.html";
-// 			}
-// 		};
-// 		xhr.send(jsonPayload);
-// 	}
-// 	catch (err) {
-// 		document.getElementById("loginResult").innerHTML = err.message;
-// 	}
+				window.location.href = "landing.html";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
 
-// }
+}
 
 
 function doRegister() {
@@ -91,7 +91,7 @@ function doRegister() {
 					return;
 				}
 
-				// document.getElementById("registerResult").innerHTML = "User registered successfully.";
+				document.getElementById("registerResult").innerHTML = "User registered successfully.";
 
 				// Optionally, you can redirect the user to the login page after successful registration
 				window.location.reload();
