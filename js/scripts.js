@@ -76,7 +76,6 @@ function doRegister() {
 		LastName: lastName,
 		login: login,
 		password: password
-		// password: hash
 	};
 
 	let jsonPayload = JSON.stringify(userData);
@@ -98,9 +97,9 @@ function doRegister() {
 				}
 
 				document.getElementById("registerResult").innerHTML = "User registered successfully.";
-
+				saveCookie();
 				// Optionally, you can redirect the user to the login page after successful registration
-				window.location.href = "index.html";
+				window.location.href = "landing.html";
 			}
 		};
 		xhr.send(jsonPayload);
