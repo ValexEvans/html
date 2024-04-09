@@ -54,10 +54,6 @@ function doLogin() {
 
 
 function doRegister() {
-	let UserID = 0;
-	let FirstName = "";
-	let LastName = "";
-
 	let firstName = document.getElementById("registerFirstName").value;
 	let lastName = document.getElementById("registerLastName").value;
 	let login = document.getElementById("registerLogin").value;
