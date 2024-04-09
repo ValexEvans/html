@@ -84,7 +84,7 @@ function doRegister() {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
-				UserID = jsonObject.id;
+				UserID = jsonObject.UserID;
 
 				if (UserID < 1) {
 					document.getElementById("registerResult").innerHTML = "Failed to register user.";

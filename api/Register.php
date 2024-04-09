@@ -18,7 +18,7 @@
         if ($stmt->affected_rows > 0) {
             // Retrieve the UserID of the newly inserted user
             $UserID = $stmt->insert_id;
-            returnWithInfo("id", $UserID);
+            returnWithInfo($UserID);
         } else {
             returnWithError("0");
         }
