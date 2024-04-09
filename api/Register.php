@@ -4,8 +4,8 @@
 	
 	$FirstName = $inData["FirstName"];
 	$LastName = $inData["LastName"];
-	$Login = $inData["Login"];
-	$Password = $inData["Password"];
+	$Login = $inData["login"];
+	$Password = $inData["password"];
 
 	$conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01"); 	
 	if ($conn->connect_error) {
