@@ -17,8 +17,8 @@
 
         if ($stmt->affected_rows > 0) {
             // Retrieve the UserID of the newly inserted user
-            // $UserID = $stmt->insert_id;
-			returnWithInfo($FirstName, $LastName, $stmt->insert_id);
+            $UserID = $stmt->insert_id;
+            returnWithInfo("User registered successfully.", $UserID);
         } else {
             returnWithError("0");
         }
