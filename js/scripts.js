@@ -6,7 +6,7 @@ let FirstName = "";
 let LastName = "";
 
 // Function to call the PHP script and handle the response
-function checkUserRole(UserID) {
+function checkUserRole() {
     // URL of the PHP script
     const url = 'http://143.198.135.118/UserRole.php';
 
@@ -52,6 +52,53 @@ function checkUserRole(UserID) {
     });
 }
 
+
+
+
+function checkUserRole(UserID) {
+
+	let tmp = { login: login, password: password };
+	//	var tmp = {login:login,password:hash};
+	let jsonPayload = JSON.stringify(tmp);
+
+	let url = urlBase + '/Login.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+				UserID = jsonObject.UserID;
+
+				if (UserID < 1) {
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+
+				FirstName = jsonObject.FirstName;
+				LastName = jsonObject.LastName;
+
+				saveCookie();
+				checkUserRole();
+				
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
+
+}
+
+
+
+
+
+
+
 function doLogin() {
 	UserID = 0;
 	FirstName = "";
@@ -86,8 +133,10 @@ function doLogin() {
 				FirstName = jsonObject.FirstName;
 				LastName = jsonObject.LastName;
 
-				saveCookie();
 				checkUserRole(UserID);
+
+				saveCookie();
+				
 				
 			}
 		};

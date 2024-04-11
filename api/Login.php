@@ -21,7 +21,7 @@
 
 		if( $row = $result->fetch_assoc()  )
 		{
-			returnWithInfo( $row['FirstName'], $row['LastName'], $row['UserID'] );
+			returnWithInfo( $row['FirstName'], $row['LastName'], $row['UserID'] , $row["Role"]);
 		}
 		else
 		{
