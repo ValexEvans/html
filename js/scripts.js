@@ -4,94 +4,97 @@ const extension = 'php';
 let UserID = 0;
 let FirstName = "";
 let LastName = "";
+let Role = "";
 
-// Function to call the PHP script and handle the response
-function checkUserRole() {
-    // URL of the PHP script
-    const url = 'http://143.198.135.118/UserRole.php';
+// // Function to call the PHP script and handle the response
+// function checkUserRole() {
+//     // URL of the PHP script
+//     const url = 'http://143.198.135.118/UserRole.php';
 
-    // Data to send in the POST request
-    const data = {
-        UserID: UserID
-    };
+//     // Data to send in the POST request
+//     const data = {
+//         UserID: UserID
+//     };
 
-    // Options for the fetch request
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
+//     // Options for the fetch request
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     };
 
-    // Make the fetch request
-    fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
-        // Check the role received from the PHP script
-        const role = data.role;
-        // Redirect the user based on the role
-        switch (role) {
-            case 'Student':
-                window.location.href = 'student_landing_page.html';
-                break;
-            case 'Admin':
-                window.location.href = 'admin_landing_page.html';
-                break;
-            case 'SuperAdmin':
-                window.location.href = 'superadmin_landing_page.html';
-                break;
-            default:
-                // Handle any unexpected response
-                console.error('Unexpected role:', role);
-                break;
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-
+//     // Make the fetch request
+//     fetch(url, options)
+//     .then(response => response.json())
+//     .then(data => {
+//         // Check the role received from the PHP script
+//         const role = data.role;
+//         // Redirect the user based on the role
+//         switch (role) {
+//             case 'Student':
+//                 window.location.href = 'student_landing_page.html';
+//                 break;
+//             case 'Admin':
+//                 window.location.href = 'admin_landing_page.html';
+//                 break;
+//             case 'SuperAdmin':
+//                 window.location.href = 'superadmin_landing_page.html';
+//                 break;
+//             default:
+//                 // Handle any unexpected response
+//                 console.error('Unexpected role:', role);
+//                 break;
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//     });
+// }
 
 
-function checkUserRole(UserID) {
 
-	let tmp = { login: login, password: password };
-	//	var tmp = {login:login,password:hash};
-	let jsonPayload = JSON.stringify(tmp);
 
-	let url = urlBase + '/Login.' + extension;
+// function checkUserRole(UserID) {
 
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try {
-		xhr.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
-				let jsonObject = JSON.parse(xhr.responseText);
-				UserID = jsonObject.UserID;
+// 	let tmp = { login: login, password: password };
+// 	//	var tmp = {login:login,password:hash};
+// 	let jsonPayload = JSON.stringify(tmp);
 
-				if (UserID < 1) {
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-					return;
-				}
+// 	let url = urlBase + '/Login.' + extension;
 
-				FirstName = jsonObject.FirstName;
-				LastName = jsonObject.LastName;
+// 	let xhr = new XMLHttpRequest();
+// 	xhr.open("POST", url, true);
+// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+// 	try {
+// 		xhr.onreadystatechange = function () {
+// 			if (this.readyState == 4 && this.status == 200) {
+// 				let jsonObject = JSON.parse(xhr.responseText);
+// 				UserID = jsonObject.UserID;
 
-				saveCookie();
-				checkUserRole();
-				
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch (err) {
-		document.getElementById("loginResult").innerHTML = err.message;
-	}
+// 				if (UserID < 1) {
+// 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+// 					return;
+// 				}
 
-}
+// 				FirstName = jsonObject.FirstName;
+// 				LastName = jsonObject.LastName;
+
+// 				saveCookie();
+
+
+
+
+// 			}
+// 		};
+// 		xhr.send(jsonPayload);
+// 	}
+// 	catch (err) {
+// 		document.getElementById("loginResult").innerHTML = err.message;
+// 	}
+
+// }
 
 
 
@@ -103,6 +106,7 @@ function doLogin() {
 	UserID = 0;
 	FirstName = "";
 	LastName = "";
+	Role = "";
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
@@ -133,11 +137,29 @@ function doLogin() {
 				FirstName = jsonObject.FirstName;
 				LastName = jsonObject.LastName;
 
-				checkUserRole(UserID);
+
 
 				saveCookie();
-				
-				
+
+				Role = data.jsonObject.Role;
+				// Redirect the user based on the role
+				switch (Role) {
+					case 'Student':
+						window.location.href = 'student_landing_page.html';
+						break;
+					case 'Admin':
+						window.location.href = 'admin_landing_page.html';
+						break;
+					case 'SuperAdmin':
+						window.location.href = 'superadmin_landing_page.html';
+						break;
+					default:
+						// Handle any unexpected response
+						console.error('Unexpected role:', role);
+						break;
+				}
+
+
 			}
 		};
 		xhr.send(jsonPayload);
