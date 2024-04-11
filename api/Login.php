@@ -6,6 +6,7 @@
 	$UserID = 0;
 	$FirstName = "";
 	$LastName = "";
+	$Role = "";
 
 	$conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01"); 	
 	if( $conn->connect_error )
@@ -49,9 +50,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $FirstName, $LastName, $UserID )
+	function returnWithInfo( $FirstName, $LastName, $UserID , $Role)
 	{
-		$retValue = '{"UserID":' . $UserID . ',"FirstName":"' . $FirstName . '","LastName":"' . $LastName . '","error":""}';
+		$retValue = '{"UserID":' . $UserID . ',"FirstName":"' . $FirstName . '","LastName":"' . $LastName . '","Role":"' . $Role . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
