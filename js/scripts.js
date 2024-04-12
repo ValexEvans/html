@@ -140,24 +140,24 @@ function doLogin() {
 
 
 				saveCookie();
-
-				Role = data.jsonObject.Role;
-				// Redirect the user based on the role
-				switch (Role) {
-					case 'Student':
-						window.location.href = 'student_landing_page.html';
-						break;
-					case 'Admin':
-						window.location.href = 'admin_landing_page.html';
-						break;
-					case 'SuperAdmin':
-						window.location.href = 'superadmin_landing_page.html';
-						break;
-					default:
-						// Handle any unexpected response
-						console.error('Unexpected role:', role);
-						break;
-				}
+				window.location.href = 'superadmin_landing_page.html';
+				// Role = data.jsonObject.Role;
+				// // Redirect the user based on the role
+				// switch (Role) {
+				// 	case 'Student':
+				// 		window.location.href = 'student_landing_page.html';
+				// 		break;
+				// 	case 'Admin':
+				// 		window.location.href = 'admin_landing_page.html';
+				// 		break;
+				// 	case 'SuperAdmin':
+				// 		window.location.href = 'superadmin_landing_page.html';
+				// 		break;
+				// 	default:
+				// 		// Handle any unexpected response
+				// 		console.error('Unexpected role:', role);
+				// 		break;
+				// }
 
 
 			}
