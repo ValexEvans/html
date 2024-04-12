@@ -139,8 +139,8 @@ function doLogin() {
 
 
 
-				saveCookie();
 				window.location.href = 'landing_page.html';
+				saveCookie();
 				// Role = data.jsonObject.Role;
 				// // Redirect the user based on the role
 				// switch (Role) {
