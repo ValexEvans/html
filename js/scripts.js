@@ -140,7 +140,7 @@ function doLogin() {
 
 
 				saveCookie();
-				window.location.href = 'superadmin_landing_page.html';
+				window.location.href = 'landing_page.html';
 				// Role = data.jsonObject.Role;
 				// // Redirect the user based on the role
 				// switch (Role) {
