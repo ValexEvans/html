@@ -1,59 +1,55 @@
-
 <?php
-
-	$inData = getRequestInfo();
-	
-	$UserID = 0;
-	$FirstName = "";
-	$LastName = "";
-	$RoleType = "";
-
-	$conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01"); 	
-	if( $conn->connect_error )
-	{
-		returnWithError( $conn->connect_error );
+	// Function to get request information from JSON input
+	function getRequestInfo() {
+		return json_decode(file_get_contents('php://input'), true);
 	}
-	else
-	{
-		$stmt = $conn->prepare("SELECT UserID,FirstName,LastName,RoleType FROM User WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData["login"], $inData["password"]);
+
+	// Function to send JSON response
+	function sendResultInfoAsJson($obj) {
+		header('Content-type: application/json');
+		echo json_encode($obj);
+	}
+
+	// Function to return error response
+	function returnWithError($err) {
+		sendResultInfoAsJson(array("error" => $err));
+	}
+
+	// Function to return success response
+	function returnWithInfo($userID, $firstName, $lastName, $roleType) {
+		sendResultInfoAsJson(array(
+			"UserID" => $userID,
+			"FirstName" => $firstName,
+			"LastName" => $lastName,
+			"RoleType" => $roleType,
+			"error" => ""
+		));
+	}
+
+	// Establishing connection to the database
+	$conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01"); 	
+	if ($conn->connect_error) {
+		returnWithError($conn->connect_error);
+	} else {
+		// Retrieving login credentials from request
+		$inData = getRequestInfo();
+		$login = $inData["login"];
+		$password = $inData["password"];
+
+		// Prepare and execute SQL query to retrieve user information
+		$stmt = $conn->prepare("SELECT UserID, FirstName, LastName, RoleType FROM user WHERE Login=? AND Password =?");
+		$stmt->bind_param("ss", $login, $password);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
-		if( $row = $result->fetch_assoc()  )
-		{
-			returnWithInfo( $row['FirstName'], $row['LastName'], $row['UserID'] , $row["RoleType"]);
-		}
-		else
-		{
+		// Check if user exists
+		if ($row = $result->fetch_assoc()) {
+			returnWithInfo($row['UserID'], $row['FirstName'], $row['LastName'], $row['RoleType']);
+		} else {
 			returnWithError("No Records Found");
 		}
 
 		$stmt->close();
 		$conn->close();
 	}
-	
-	function getRequestInfo()
-	{
-		return json_decode(file_get_contents('php://input'), true);
-	}
-
-	function sendResultInfoAsJson( $obj )
-	{
-		header('Content-type: application/json');
-		echo $obj;
-	}
-	
-	function returnWithError( $err )
-	{
-		$retValue = '{"UserID":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
-	}
-	
-	function returnWithInfo( $FirstName, $LastName, $UserID , $RoleType)
-	{
-		$retValue = '{"UserID":' . $UserID . ',"FirstName":"' . $FirstName . '","LastName":"' . $LastName . '","RoleType":"' . $RoleType . '","error":""}';
-		sendResultInfoAsJson( $retValue );
-	}
-	
 ?>
