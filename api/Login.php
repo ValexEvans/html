@@ -50,7 +50,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $FirstName, $LastName, $UserID , $Role)
+	function returnWithInfo( $FirstName, $LastName, $UserID)
 	{
 		$retValue = '{"UserID":' . $UserID . ',"FirstName":"' . $FirstName . '","LastName":"' . $LastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
