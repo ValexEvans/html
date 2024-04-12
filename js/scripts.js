@@ -139,7 +139,7 @@ function doLogin() {
 
 
 
-				window.location.href = 'landing_page.html';
+				window.location.href = 'admin_landing_page.html';
 				saveCookie();
 				// Role = data.jsonObject.Role;
 				// // Redirect the user based on the role
