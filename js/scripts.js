@@ -134,8 +134,83 @@ function doRegister() {
 	}
 }
 
-function listEvents(){
+document.addEventListener("DOMContentLoaded", function() {
+    fetchEvents();
+});
 
+function fetchEvents() {
+    let login = ""; // Modify this with the logged-in user's login
+    let password = ""; // Modify this with the logged-in user's password
+    let tmp = { login: login, password: password };
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/ListEvents.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let events = JSON.parse(xhr.responseText);
+                displayEvents(events);
+            }
+        };
+        xhr.send(jsonPayload);
+    }
+    catch (err) {
+        console.error('Error fetching events:', err);
+    }
+}
+
+function displayEvents(events) {
+    const eventsContainer = document.getElementById('events-container');
+    events.forEach(event => {
+        const eventElement = createEventElement(event);
+        eventsContainer.appendChild(eventElement);
+    });
+}
+
+
+
+function createEventElement(event) {
+    const eventElement = document.createElement('div');
+    eventElement.classList.add('event');
+    
+    const nameElement = document.createElement('h2');
+    nameElement.textContent = event.Name;
+    eventElement.appendChild(nameElement);
+    
+    const categoryElement = document.createElement('p');
+    categoryElement.textContent = `Category: ${event.Category}`;
+    eventElement.appendChild(categoryElement);
+    
+    const descriptionElement = document.createElement('p');
+    descriptionElement.textContent = event.Description;
+    eventElement.appendChild(descriptionElement);
+    
+    const timeElement = document.createElement('p');
+    timeElement.textContent = `Time: ${event.Time}`;
+    eventElement.appendChild(timeElement);
+    
+    const dateElement = document.createElement('p');
+    dateElement.textContent = `Date: ${event.Date}`;
+    eventElement.appendChild(dateElement);
+    
+    const locationElement = document.createElement('p');
+    locationElement.textContent = `Location: ${event.Location}`;
+    eventElement.appendChild(locationElement);
+    
+    const contactElement = document.createElement('p');
+    contactElement.textContent = `Contact Phone: ${event.ContactPhone}`;
+    eventElement.appendChild(contactElement);
+    
+    const visibilityElement = document.createElement('p');
+    visibilityElement.textContent = `Visibility: ${event.Visibility}`;
+    eventElement.appendChild(visibilityElement);
+    
+    return eventElement;
 }
 
 
