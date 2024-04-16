@@ -99,7 +99,7 @@ function doRegister() {
 		LastName: LastName,
 		login: login,
 		password: password,
-		Role: "Student"
+		Role: 'Student'
 	};
 
 	let jsonPayload = JSON.stringify(userData);
