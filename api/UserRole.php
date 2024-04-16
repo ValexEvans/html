@@ -15,8 +15,8 @@ if ($conn->connect_error) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $role = $row["Role"];
-        returnWithInfo($role);
+        $Role = $row["Role"];
+        returnWithInfo($Role);
     } else {
         returnWithError("User not found.");
     }
@@ -39,7 +39,7 @@ function returnWithError($err)
 
 function returnWithInfo($info)
 {
-    $retValue = array("role" => $info);
+    $retValue = array("Role" => $info);
     sendResultInfoAsJson($retValue);
 }
 
