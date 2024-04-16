@@ -137,7 +137,7 @@ function doRegister() {
 
 
 function fetchEvents() {
-	EventID = 0;
+	let EventID = 0;
     let tmp = { EventID: EventID };
     let jsonPayload = JSON.stringify(tmp);
 
