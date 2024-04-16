@@ -6,13 +6,14 @@
     $LastName = $inData["LastName"];
     $Login = $inData["login"];
     $Password = $inData["password"];
+    $Role = $inData["Role"];
 
     $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");   
     if ($conn->connect_error) {
         returnWithError($conn->connect_error);
     } else {
-        $stmt = $conn->prepare("INSERT INTO User (FirstName, LastName, Login, Password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password);
+        $stmt = $conn->prepare("INSERT INTO User (FirstName, LastName, Login, Password, Role) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password, $Role);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {

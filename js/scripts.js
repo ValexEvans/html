@@ -83,12 +83,13 @@ function doLogin() {
 
 }
 
-
+// doRegister will register all as a student
 function doRegister() {
 	let firstName = document.getElementById("registerFirstName").value;
 	let lastName = document.getElementById("registerLastName").value;
 	let login = document.getElementById("registerLogin").value;
 	let password = document.getElementById("registerPassword").value;
+	let Role = "Student";
 	// var hash = md5(password);
 
 	document.getElementById("registerResult").innerHTML = "";
@@ -97,7 +98,8 @@ function doRegister() {
 		FirstName: firstName,
 		LastName: lastName,
 		login: login,
-		password: password
+		password: password,
+		Role: Role
 	};
 
 	UserID = 0;
@@ -175,7 +177,7 @@ function createEventElement(event) {
     const eventElement = document.createElement('div');
     eventElement.classList.add('event');
     
-    const nameElement = document.createElement('h2');
+    const nameElement = document.createElement('h3');
     nameElement.textContent = event.Name;
     eventElement.appendChild(nameElement);
     
