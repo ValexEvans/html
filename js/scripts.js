@@ -4,7 +4,7 @@ const extension = 'php';
 let UserID = 0;
 let FirstName = "";
 let LastName = "";
-let Role = "";
+
 
 let EventID = 0;
 let Name = "";
@@ -103,7 +103,7 @@ function doRegister() {
 	};
 
 	let jsonPayload = JSON.stringify(userData);
-	
+
 	UserID = 0;
 	FirstName = "";
 	LastName = "";
