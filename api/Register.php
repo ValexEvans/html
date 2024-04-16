@@ -12,8 +12,8 @@
     if ($conn->connect_error) {
         returnWithError($conn->connect_error);
     } else {
-        $stmt = $conn->prepare("INSERT INTO User (FirstName, LastName, Login, Password, Role) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password, $Role);
+        $stmt = $conn->prepare("INSERT INTO User (FirstName, LastName, Login, Password, Role) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $FirstName, $LastName, $Login, $Password, $Role);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
