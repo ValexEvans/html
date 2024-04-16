@@ -178,49 +178,49 @@ form input[type="submit"]:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-}
-
-/* Style for individual event */
-.event {
+  }
+  
+  /* Style for individual event */
+  .event {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
-    width: calc(33.33% - 20px);
-    /* Adjust the width as per your layout */
-}
-
-/* Style for event name */
-.event h3 {
+    width: calc(33.33% - 20px); /* Adjust the width as per your layout */
+  }
+  
+  /* Style for event name */
+  .event h3 {
     margin-top: 0;
     color: #333;
-}
-
-/* Style for event details */
-.event p {
+  }
+  
+  /* Style for event details */
+  .event p {
     margin: 5px 0;
     color: #666;
-}
-
-/* Style for event category */
-.event p:first-child {
+  }
+  
+  /* Style for event category */
+  .event p:first-child {
     font-weight: bold;
-}
-
-/* Style for event time and date */
-.event p:nth-last-child(2),
-.event p:last-child {
+  }
+  
+  /* Style for event time and date */
+  .event p:nth-last-child(2),
+  .event p:last-child {
     font-style: italic;
-}
-
-/* Style for event location and contact */
-.event p:nth-last-child(3),
-.event p:nth-last-child(4) {
+  }
+  
+  /* Style for event location and contact */
+  .event p:nth-last-child(3),
+  .event p:nth-last-child(4) {
     font-weight: bold;
-}
-
-/* Style for event visibility */
-.event p:nth-last-child(5) {
+  }
+  
+  /* Style for event visibility */
+  .event p:nth-last-child(5) {
     text-transform: capitalize;
-}
+  }
+  
