@@ -90,6 +90,7 @@ function doRegister() {
 	let login = document.getElementById("registerLogin").value;
 	let password = document.getElementById("registerPassword").value;
 	let Role = "Student";
+
 	// var hash = md5(password);
 
 	document.getElementById("registerResult").innerHTML = "";
@@ -99,7 +100,7 @@ function doRegister() {
 		LastName: LastName,
 		login: login,
 		password: password,
-		Role: 'Student'
+		Role: Role
 	};
 
 	let jsonPayload = JSON.stringify(userData);
