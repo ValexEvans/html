@@ -125,7 +125,7 @@ function doRegister() {
 					return;
 				}
 
-				// document.getElementById("registerResult").innerHTML = "User registered successfully.";
+				document.getElementById("registerResult").innerHTML = "User registered successfully.";
 
 				// Optionally, you can redirect the user to the login page after successful registration
 				window.location.reload();
