@@ -85,8 +85,8 @@ function doLogin() {
 
 // doRegister will register all as a student
 function doRegister() {
-	let firstName = document.getElementById("registerFirstName").value;
-	let lastName = document.getElementById("registerLastName").value;
+	let FirstName = document.getElementById("registerFirstName").value;
+	let LastName = document.getElementById("registerLastName").value;
 	let login = document.getElementById("registerLogin").value;
 	let password = document.getElementById("registerPassword").value;
 	let Role = "Student";
@@ -95,16 +95,17 @@ function doRegister() {
 	document.getElementById("registerResult").innerHTML = "";
 
 	let userData = {
-		FirstName: firstName,
-		LastName: lastName,
+		FirstName: FirstName,
+		LastName: LastName,
 		login: login,
 		password: password,
 		Role: Role
 	};
 
 	UserID = 0;
-	firstName = "";
-	fastName = "";
+	FirstName = "";
+	LastName = "";
+	Role = "";
 
 	let jsonPayload = JSON.stringify(userData);
 
