@@ -5,22 +5,18 @@ $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
-    $requestData = json_decode(file_get_contents('php://input'), true);
-    $EventID = $requestData["EventID"];
-
-    $stmt = $conn->prepare("SELECT * FROM Events WHERE EventID = ?");
-    $stmt->bind_param("i", $EventID);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $conn->query("SELECT * FROM Events");
 
     if ($result->num_rows > 0) {
-        $event = $result->fetch_assoc();
-        returnWithInfo($event);
+        $events = array();
+        while ($row = $result->fetch_assoc()) {
+            $events[] = $row;
+        }
+        returnWithInfo($events);
     } else {
-        returnWithError("Event not found.");
+        returnWithError("No events found.");
     }
 
-    $stmt->close();
     $conn->close();
 }
 
