@@ -57,7 +57,7 @@ function doLogin() {
 				// Redirect the user based on the role
 				switch (Role) {
 					case 'Student':
-						window.location.href = 'landing_page.html';
+						window.location.href = 'student_landing_page.html';
 						break;
 					case 'Admin':
 						window.location.href = 'admin_landing_page.html';
