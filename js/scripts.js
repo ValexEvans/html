@@ -134,9 +134,7 @@ function doRegister() {
 	}
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    fetchEvents();
-});
+
 
 function fetchEvents() {
     let login = ""; // Modify this with the logged-in user's login
