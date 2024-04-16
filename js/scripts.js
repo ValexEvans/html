@@ -137,9 +137,8 @@ function doRegister() {
 
 
 function fetchEvents() {
-    let login = ""; // Modify this with the logged-in user's login
-    let password = ""; // Modify this with the logged-in user's password
-    let tmp = { login: login, password: password };
+	EventID = 0;
+    let tmp = { EventID: EventID };
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/ListEvents.' + extension;
