@@ -6,7 +6,16 @@ let FirstName = "";
 let LastName = "";
 let Role = "";
 
-
+let EventID = 0;
+let Name = "";
+let Category = "";
+let Description = "";
+let Time = "";
+let Date = "";
+let Location = "";
+let ContactPhone = "";
+let Visibility = "";
+let OrganizerID = 0;
 
 function doLogin() {
 	UserID = 0;
@@ -42,9 +51,6 @@ function doLogin() {
 
 				FirstName = jsonObject.FirstName;
 				LastName = jsonObject.LastName;
-
-
-
 
 
 				Role = jsonObject.Role;
@@ -128,6 +134,10 @@ function doRegister() {
 	}
 }
 
+function listEvents(){
+
+}
+
 
 function saveCookie() {
 	let minutes = 20;
@@ -170,3 +180,19 @@ function doLogout() {
 	window.location.href = "index.html";
 }
 
+function switchContent() {
+    var content1 = document.getElementById('loginForm');
+    var content2 = document.getElementById('registerForm');
+
+    if (content1.classList.contains('active')) {
+        content1.classList.remove('active');
+        content1.classList.add('inactive');
+        content2.classList.remove('inactive');
+        content2.classList.add('active');
+    } else {
+        content2.classList.remove('active');
+        content2.classList.add('inactive');
+        content1.classList.remove('inactive');
+        content1.classList.add('active');
+    }
+}
