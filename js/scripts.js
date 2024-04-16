@@ -99,15 +99,17 @@ function doRegister() {
 		LastName: LastName,
 		login: login,
 		password: password,
-		Role: Role
+		Role: "Student"
 	};
 
+	let jsonPayload = JSON.stringify(userData);
+	
 	UserID = 0;
 	FirstName = "";
 	LastName = "";
 	Role = "";
 
-	let jsonPayload = JSON.stringify(userData);
+	
 
 	let url = urlBase + '/Register.' + extension;
 
