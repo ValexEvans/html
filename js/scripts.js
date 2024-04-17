@@ -254,6 +254,95 @@ function submitUniversityForm() {
 	}
 }
 
+
+function submitStudentForm() {
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("login").value;
+	let password = document.getElementById("password").value;
+	let universityName = document.getElementById("universityName").value;
+	let userRole = "Student";
+
+	let formData = {
+		FirstName: firstName,
+		LastName: lastName,
+		Login: login,
+		Password: password,
+		Role: userRole,
+		Name: universityName
+	};
+
+	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("addUserResult").innerHTML = "";
+
+	let xhr = new XMLHttpRequest();
+	let url = urlBase + '/StudentRegister.' + extension;
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+
+				document.getElementById("addUserResult").innerHTML = "Student added successfully";
+
+				// Optionally, you can redirect the user to the login page after successful registration
+				// window.location.reload();
+			}
+		};
+		xhr.send(jsonPayload);
+	} catch (err) {
+		document.getElementById("addUserResult").innerHTML = err.message;
+	}
+
+}
+
+function submitAdminForm() {
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("login").value;
+	let password = document.getElementById("password").value;
+	let universityName = document.getElementById("universityName").value;
+	let userRole = "Admin";
+
+	let formData = {
+		FirstName: firstName,
+		LastName: lastName,
+		Login: login,
+		Password: password,
+		Role: userRole,
+		UniversityName: universityName
+	};
+
+	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("addUserResult").innerHTML = "";
+
+	let xhr = new XMLHttpRequest();
+	let url = urlBase + '/AdminRegister.' + extension;
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+
+				document.getElementById("addUserResult").innerHTML = "Admin added successfully";
+
+				// Optionally, you can redirect the user to the login page after successful registration
+				// window.location.reload();
+			}
+		};
+		xhr.send(jsonPayload);
+	} catch (err) {
+		document.getElementById("addUserResult").innerHTML = err.message;
+	}
+}
+
+function submitSuperAdminForm() {
+
+}
+
+
 function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
