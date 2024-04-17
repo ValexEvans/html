@@ -7,17 +7,13 @@ let LastName = "";
 
 
 let EventID = 0;
-let Name = "";
 let Category = "";
-let Description = "";
 let Time = "";
 let Date = "";
 let Location = "";
 let ContactPhone = "";
 let Visibility = "";
 let OrganizerID = 0;
-let UniversityName = "";
-let NumberOfStudents = 0;
 
 function doLogin() {
 	UserID = 0;
@@ -228,10 +224,10 @@ function submitUniversityForm() {
 		Location: Location,
 		Description: Description,
 		NumberOfStudents: NumberOfStudents
-		// Pictures: Pictures
 	};
 
 	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("createUniversityResult").innerHTML = "";
 
 	// for (let i = 0; i < pictures.length; i++) {
 	//     formData.append("Pictures[]", pictures[i]);
