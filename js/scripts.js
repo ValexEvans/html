@@ -272,6 +272,13 @@ function submitStudentForm() {
 		UniversityName: universityName
 	};
 
+	firstName = "";
+	lastName = "";
+	login = "";
+	password = "";
+	universityName = "";
+	userRole = "";
+
 	let jsonPayload = JSON.stringify(formData);
 	document.getElementById("addUserResult").innerHTML = "";
 
@@ -312,6 +319,14 @@ function submitAdminForm() {
 		UniversityName: universityName
 	};
 
+
+	firstName = "";
+	lastName = "";
+	login = "";
+	password = "";
+	universityName = "";
+	userRole = "";
+
 	let jsonPayload = JSON.stringify(formData);
 	document.getElementById("addUserResult").innerHTML = "";
 
@@ -336,9 +351,7 @@ function submitAdminForm() {
 	}
 }
 
-function submitSuperAdminForm() {
 
-}
 
 
 function saveCookie() {
