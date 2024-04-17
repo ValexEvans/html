@@ -225,7 +225,7 @@ function submitUniversityForm() {
 		Name: Name,
 		Location: Location,
 		Description: Description,
-		NumberOfStudents: NumberOfStudents,
+		NumberOfStudents: NumberOfStudents
 		// Pictures: Pictures
 	};
 
