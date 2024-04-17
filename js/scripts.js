@@ -141,7 +141,6 @@ function doRegister() {
 }
 
 
-
 function fetchEvents() {
 	let EventID = 0;
     let tmp = { EventID: EventID };
@@ -229,12 +228,12 @@ function submitUniversityForm() {
 		// Pictures: Pictures
 	};
 
+	let jsonPayload = JSON.stringify(formData);
+
 	Name = "";
     Location = "";
     Description = "";
     NumberOfStudents = 0;
-
-	let jsonPayload = JSON.stringify(formData);
 
     // for (let i = 0; i < pictures.length; i++) {
     //     formData.append("Pictures[]", pictures[i]);
