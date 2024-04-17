@@ -222,12 +222,12 @@ function submitUniversityForm() {
     let pictures = document.getElementById("pictures").files;
 
     let formData = new FormData();
-    formData.append("name", name);
-    formData.append("location", location);
-    formData.append("description", description);
-    formData.append("numberOfStudents", numberOfStudents);
+    formData.append("Name", name);
+    formData.append("Location", location);
+    formData.append("Description", description);
+    formData.append("NumberOfStudents", numberOfStudents);
     for (let i = 0; i < pictures.length; i++) {
-        formData.append("pictures[]", pictures[i]);
+        formData.append("Pictures[]", pictures[i]);
     }
 
     let xhr = new XMLHttpRequest();
