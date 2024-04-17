@@ -16,6 +16,8 @@ let Location = "";
 let ContactPhone = "";
 let Visibility = "";
 let OrganizerID = 0;
+let UniversityName = "";
+let NumberOfStudents = 0;
 
 function doLogin() {
 	UserID = 0;
@@ -110,7 +112,7 @@ function doRegister() {
 	LastName = "";
 	Role = "";
 
-	
+
 
 	let url = urlBase + '/Register.' + extension;
 
@@ -144,82 +146,82 @@ function doRegister() {
 
 function fetchEvents() {
 	let EventID = 0;
-    let tmp = { EventID: EventID };
-    let jsonPayload = JSON.stringify(tmp);
+	let tmp = { EventID: EventID };
+	let jsonPayload = JSON.stringify(tmp);
 
-    let url = urlBase + '/ListEvents.' + extension;
+	let url = urlBase + '/ListEvents.' + extension;
 
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-    try {
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                let events = JSON.parse(xhr.responseText);
-                displayEvents(events);
-            }
-        };
-        xhr.send(jsonPayload);
-    }
-    catch (err) {
-        console.error('Error fetching events:', err);
-    }
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let events = JSON.parse(xhr.responseText);
+				displayEvents(events);
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+		console.error('Error fetching events:', err);
+	}
 }
 
 function displayEvents(events) {
-    const eventsContainer = document.getElementById('events-container');
-    events.forEach(event => {
-        const eventElement = createEventElement(event);
-        eventsContainer.appendChild(eventElement);
-    });
+	const eventsContainer = document.getElementById('events-container');
+	events.forEach(event => {
+		const eventElement = createEventElement(event);
+		eventsContainer.appendChild(eventElement);
+	});
 }
 
 function createEventElement(event) {
-    const eventElement = document.createElement('div');
-    eventElement.classList.add('event');
-    
-    const nameElement = document.createElement('h3');
-    nameElement.textContent = event.Name;
-    eventElement.appendChild(nameElement);
-    
-    const categoryElement = document.createElement('p');
-    categoryElement.textContent = `Category: ${event.Category}`;
-    eventElement.appendChild(categoryElement);
-    
-    const descriptionElement = document.createElement('p');
-    descriptionElement.textContent = event.Description;
-    eventElement.appendChild(descriptionElement);
-    
-    const timeElement = document.createElement('p');
-    timeElement.textContent = `Time: ${event.Time}`;
-    eventElement.appendChild(timeElement);
-    
-    const dateElement = document.createElement('p');
-    dateElement.textContent = `Date: ${event.Date}`;
-    eventElement.appendChild(dateElement);
-    
-    const locationElement = document.createElement('p');
-    locationElement.textContent = `Location: ${event.Location}`;
-    eventElement.appendChild(locationElement);
-    
-    const contactElement = document.createElement('p');
-    contactElement.textContent = `Contact Phone: ${event.ContactPhone}`;
-    eventElement.appendChild(contactElement);
-    
-    const visibilityElement = document.createElement('p');
-    visibilityElement.textContent = `Visibility: ${event.Visibility}`;
-    eventElement.appendChild(visibilityElement);
-    
-    return eventElement;
+	const eventElement = document.createElement('div');
+	eventElement.classList.add('event');
+
+	const nameElement = document.createElement('h3');
+	nameElement.textContent = event.Name;
+	eventElement.appendChild(nameElement);
+
+	const categoryElement = document.createElement('p');
+	categoryElement.textContent = `Category: ${event.Category}`;
+	eventElement.appendChild(categoryElement);
+
+	const descriptionElement = document.createElement('p');
+	descriptionElement.textContent = event.Description;
+	eventElement.appendChild(descriptionElement);
+
+	const timeElement = document.createElement('p');
+	timeElement.textContent = `Time: ${event.Time}`;
+	eventElement.appendChild(timeElement);
+
+	const dateElement = document.createElement('p');
+	dateElement.textContent = `Date: ${event.Date}`;
+	eventElement.appendChild(dateElement);
+
+	const locationElement = document.createElement('p');
+	locationElement.textContent = `Location: ${event.Location}`;
+	eventElement.appendChild(locationElement);
+
+	const contactElement = document.createElement('p');
+	contactElement.textContent = `Contact Phone: ${event.ContactPhone}`;
+	eventElement.appendChild(contactElement);
+
+	const visibilityElement = document.createElement('p');
+	visibilityElement.textContent = `Visibility: ${event.Visibility}`;
+	eventElement.appendChild(visibilityElement);
+
+	return eventElement;
 }
 
 function submitUniversityForm() {
-    let UniversityName = document.getElementById("universityName").value;
-    let Location = document.getElementById("location").value;
-    let Description = document.getElementById("description").value;
-    let NumberOfStudents = document.getElementById("numberOfStudents").value;
-    // let Pictures = document.getElementById("pictures").files;
+	let UniversityName = document.getElementById("universityName").value;
+	let Location = document.getElementById("location").value;
+	let Description = document.getElementById("description").value;
+	let NumberOfStudents = document.getElementById("numberOfStudents").value;
+	// let Pictures = document.getElementById("pictures").files;
 
 	let formData = {
 		Name: UniversityName,
@@ -231,11 +233,11 @@ function submitUniversityForm() {
 
 	let jsonPayload = JSON.stringify(formData);
 
-    // for (let i = 0; i < pictures.length; i++) {
-    //     formData.append("Pictures[]", pictures[i]);
-    // }
+	// for (let i = 0; i < pictures.length; i++) {
+	//     formData.append("Pictures[]", pictures[i]);
+	// }
 
-    let xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 	let url = urlBase + '/University.' + extension;
 
 	xhr.open("POST", url, true);
