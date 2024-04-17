@@ -175,8 +175,6 @@ function displayEvents(events) {
     });
 }
 
-
-
 function createEventElement(event) {
     const eventElement = document.createElement('div');
     eventElement.classList.add('event');
@@ -216,6 +214,34 @@ function createEventElement(event) {
     return eventElement;
 }
 
+function submitUniversityForm() {
+    let name = document.getElementById("name").value;
+    let location = document.getElementById("location").value;
+    let description = document.getElementById("description").value;
+    let numberOfStudents = document.getElementById("numberOfStudents").value;
+    let pictures = document.getElementById("pictures").files;
+
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("location", location);
+    formData.append("description", description);
+    formData.append("numberOfStudents", numberOfStudents);
+    for (let i = 0; i < pictures.length; i++) {
+        formData.append("pictures[]", pictures[i]);
+    }
+
+    let xhr = new XMLHttpRequest();
+	let url = urlBase + '/University.' + extension;
+    xhr.open("POST", url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let response = xhr.responseText;
+            // Handle the response from the PHP file as needed
+            console.log(response);
+        }
+    };
+    xhr.send(formData);
+}
 
 function saveCookie() {
 	let minutes = 20;

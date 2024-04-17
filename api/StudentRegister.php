@@ -7,7 +7,7 @@ $LastName = $inData["LastName"];
 $Login = $inData["Login"];
 $Password = $inData["Password"];
 $Role = $inData["Role"];
-$Name = $inData["Name"];
+$Name = $inData["UniversityName"];
 
 $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");
 
