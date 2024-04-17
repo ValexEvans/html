@@ -215,32 +215,62 @@ function createEventElement(event) {
 }
 
 function submitUniversityForm() {
-    let name = document.getElementById("name").value;
-    let location = document.getElementById("location").value;
-    let description = document.getElementById("description").value;
-    let numberOfStudents = document.getElementById("numberOfStudents").value;
-    let pictures = document.getElementById("pictures").files;
+    let Name = document.getElementById("name").value;
+    let Location = document.getElementById("location").value;
+    let Description = document.getElementById("description").value;
+    let NumberOfStudents = document.getElementById("numberOfStudents").value;
+    let Pictures = document.getElementById("pictures").files;
 
-    let formData = new FormData();
-    formData.append("Name", name);
-    formData.append("Location", location);
-    formData.append("Description", description);
-    formData.append("NumberOfStudents", numberOfStudents);
-    for (let i = 0; i < pictures.length; i++) {
-        formData.append("Pictures[]", pictures[i]);
-    }
+	let formData = {
+		Name: Name,
+		Location: Location,
+		Description: Description,
+		NumberOfStudents: NumberOfStudents,
+		Pictures: Pictures
+	};
+
+	let jsonPayload = JSON.stringify(formData);
+
+
+    // let formData = new FormData();
+    // formData.append("Name", name);
+    // formData.append("Location", location);
+    // formData.append("Description", description);
+    // formData.append("NumberOfStudents", numberOfStudents);
+    // for (let i = 0; i < pictures.length; i++) {
+    //     formData.append("Pictures[]", pictures[i]);
+    // }
 
     let xhr = new XMLHttpRequest();
 	let url = urlBase + '/University.' + extension;
-    xhr.open("POST", url, true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            let response = xhr.responseText;
-            // Handle the response from the PHP file as needed
-            console.log(response);
-        }
-    };
-    xhr.send(formData);
+    // xhr.open("POST", url, true);
+    // xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //         let response = xhr.responseText;
+    //         // Handle the response from the PHP file as needed
+    //         console.log(response);
+    //     }
+    // };
+    // xhr.send(formData);
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+				UserID = jsonObject.UserID;
+
+				document.getElementById("createUniversityResult").innerHTML = "User registered successfully.";
+
+				// Optionally, you can redirect the user to the login page after successful registration
+				// window.location.reload();
+			}
+		};
+		xhr.send(jsonPayload);
+	} catch (err) {
+		document.getElementById("createUniversityResult").innerHTML = err.message;
+	}
 }
 
 function saveCookie() {
