@@ -38,7 +38,7 @@
         </div>
         <div id="universities" class="feature" style="display: none;">
             <h2>Add University</h2>
-            <form id="universityForm" onsubmit="submitUniversityForm()">
+            <form id="universityForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
 
@@ -54,7 +54,7 @@
                 <label for="pictures">Pictures:</label>
                 <input type="file" id="pictures" name="pictures" accept="image/*" multiple><br>
 
-                <button type="submit">Submit</button>
+                <button class="button" onclick="submitUniversityForm();">Submit</button>
             </form>
             <span id="createUniversityResult"></span>
         </div>
