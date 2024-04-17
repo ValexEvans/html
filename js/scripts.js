@@ -230,10 +230,7 @@ function submitUniversityForm() {
 
 	let jsonPayload = JSON.stringify(formData);
 
-	Name = "";
-    Location = "";
-    Description = "";
-    NumberOfStudents = 0;
+
 
     // for (let i = 0; i < pictures.length; i++) {
     //     formData.append("Pictures[]", pictures[i]);
