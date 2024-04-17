@@ -229,29 +229,19 @@ function submitUniversityForm() {
 		// Pictures: Pictures
 	};
 
+	Name = "";
+    Location = "";
+    Description = "";
+    NumberOfStudents = 0;
+
 	let jsonPayload = JSON.stringify(formData);
 
-
-    // let formData = new FormData();
-    // formData.append("Name", name);
-    // formData.append("Location", location);
-    // formData.append("Description", description);
-    // formData.append("NumberOfStudents", numberOfStudents);
     // for (let i = 0; i < pictures.length; i++) {
     //     formData.append("Pictures[]", pictures[i]);
     // }
 
     let xhr = new XMLHttpRequest();
 	let url = urlBase + '/University.' + extension;
-    // xhr.open("POST", url, true);
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4 && xhr.status === 200) {
-    //         let response = xhr.responseText;
-    //         // Handle the response from the PHP file as needed
-    //         console.log(response);
-    //     }
-    // };
-    // xhr.send(formData);
 
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
