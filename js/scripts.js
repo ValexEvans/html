@@ -269,7 +269,7 @@ function submitStudentForm() {
 		Login: login,
 		Password: password,
 		Role: userRole,
-		Name: universityName
+		UniversityName: universityName
 	};
 
 	let jsonPayload = JSON.stringify(formData);
@@ -286,8 +286,6 @@ function submitStudentForm() {
 
 				document.getElementById("addUserResult").innerHTML = "Student added successfully";
 
-				// Optionally, you can redirect the user to the login page after successful registration
-				// window.location.reload();
 			}
 		};
 		xhr.send(jsonPayload);
