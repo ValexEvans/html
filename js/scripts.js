@@ -219,14 +219,14 @@ function submitUniversityForm() {
     let Location = document.getElementById("location").value;
     let Description = document.getElementById("description").value;
     let NumberOfStudents = document.getElementById("numberOfStudents").value;
-    let Pictures = document.getElementById("pictures").files;
+    // let Pictures = document.getElementById("pictures").files;
 
 	let formData = {
 		Name: Name,
 		Location: Location,
 		Description: Description,
 		NumberOfStudents: NumberOfStudents,
-		Pictures: Pictures
+		// Pictures: Pictures
 	};
 
 	let jsonPayload = JSON.stringify(formData);
