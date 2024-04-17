@@ -242,7 +242,7 @@ function submitUniversityForm() {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 
-				document.getElementById("createUniversityResult").innerHTML = "User registered successfully.";
+				document.getElementById("createUniversityResult").innerHTML = "University added successfully";
 
 				// Optionally, you can redirect the user to the login page after successful registration
 				// window.location.reload();
