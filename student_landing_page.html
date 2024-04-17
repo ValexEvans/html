@@ -24,8 +24,6 @@
                 <li><a href="#" onclick="showContent('home', event)">Student Home</a></li>
                 <li><a href="#" onclick="showContent('events', event)">Events</a></li>
                 <li><a href="#" onclick="showContent('rso', event)">RSOs</a></li>
-                <li><a href="#" onclick="showContent('comments', event)">Comments</a></li>
-                <li><a href="#" onclick="showContent('ratings', event)">Ratings</a></li>
                 <li><a href="#" onclick="doLogout()">Logout</a></li>
 
             </ul>
@@ -35,8 +33,14 @@
         <div id="home" class="feature">
             <h2>Current Events</h2>
             <p>List of Events with information and ability to comment and rate</p>
+            <p> ADD & DELETE Comments and Rate Events</p>
         </div>
         <div id="events" class="feature" style="display: none;">
+
+            <h2>Search Events</h2>
+            <form>
+            </form>
+
             <h2>Create Event</h2>
             <form action="submit_event.php" method="post">
                 <label for="name">Name:</label><br>
@@ -74,26 +78,27 @@
 
                 <input type="submit" value="Submit">
             </form>
+
         </div>
         <div id="rso" class="feature" style="display: none;">
-            <h2>Registered Student Organizations</h2>
+
+            <h2>RSO List</h2>
+            <form action="submit_event.php" method="post">
+            </form>
+
+            <h2>Join RSO Request</h2>
+            <form>
+            </form>
+
+            <h2>Create RSO Request</h2>
             <form action="submit_event.php" method="post">
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name" required><br><br>
-
                 <label for="organizerID">Organizer ID:</label><br>
                 <input type="number" id="organizerID" name="organizerID" required><br><br>
-
                 <input type="submit" value="Submit">
             </form>
-        </div>
-        <div id="comments" class="feature" style="display: none;">
-            <h2>Comments</h2>
-            <p>Content for Comments section.</p>
-        </div>
-        <div id="ratings" class="feature" style="display: none;">
-            <h2>Ratings</h2>
-            <p>Content for Ratings section.</p>
+
         </div>
     </section>
     <footer>

@@ -215,14 +215,14 @@ function createEventElement(event) {
 }
 
 function submitUniversityForm() {
-    let Name = document.getElementById("name").value;
+    let UniversityName = document.getElementById("universityName").value;
     let Location = document.getElementById("location").value;
     let Description = document.getElementById("description").value;
     let NumberOfStudents = document.getElementById("numberOfStudents").value;
     // let Pictures = document.getElementById("pictures").files;
 
 	let formData = {
-		Name: Name,
+		Name: UniversityName,
 		Location: Location,
 		Description: Description,
 		NumberOfStudents: NumberOfStudents

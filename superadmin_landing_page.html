@@ -22,9 +22,7 @@
                 <li><a href="#" onclick="showContent('home', event)">Super-Admin Home</a></li>
                 <li><a href="#" onclick="showContent('universities', event)">Universities</a></li>
                 <li><a href="#" onclick="showContent('events', event)">Events</a></li>
-                <li><a href="#" onclick="showContent('rso', event)">RSOs</a></li>
-                <li><a href="#" onclick="showContent('comments', event)">Comments</a></li>
-                <li><a href="#" onclick="showContent('ratings', event)">Ratings</a></li>
+                <li><a href="#" onclick="showContent('users', event)">Users</a></li>
                 <li><a href="#" onclick="doLogout()">Logout</a></li>
             </ul>
         </nav>
@@ -33,13 +31,14 @@
         <div id="home" class="feature">
             <h2>Current Events</h2>
             <p>List of Events with information and ability to comment and rate</p>
+            <p>COMMENT & RATE</p>
             <div id="events-container"></div>
         </div>
         <div id="universities" class="feature" style="display: none;">
             <h2>Add University</h2>
-            <form id="universityForm">
+            <form id="universityForm" onsubmit="submitUniversityForm()">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
+                <input type="text" id="universityName" name="name" required><br>
 
                 <label for="location">Location:</label>
                 <input type="text" id="location" name="location" required><br>
@@ -49,76 +48,36 @@
 
                 <label for="numberOfStudents">Number of Students:</label>
                 <input type="number" id="numberOfStudents" name="numberOfStudents" required><br>
+                <p></p>
+                <!-- <label for="pictures">Pictures:</label> -->
+                <!-- <input type="file" id="pictures" name="pictures" accept="image/*" multiple><br> -->
 
-                <label for="pictures">Pictures:</label>
-                <input type="file" id="pictures" name="pictures" accept="image/*" multiple><br>
-
-                <button class="button" onclick="submitUniversityForm();">Submit</button>
+                <input type="submit" value="Submit">
             </form>
             <span id="createUniversityResult"></span>
         </div>
         <div id="events" class="feature" style="display: none;">
             <h2>Event Request</h2>
+            <form></form>
+        </div>
+        <div id="users" class="feature" style="display: none;">
+            <h2>Add User</h2>
             <form>
-                
-            </form>
-            <h2>Create Event</h2>
-            <form action="submit_event.php" method="post">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br><br>
-
-                <label for="category">Category:</label><br>
-                <input type="text" id="category" name="category" required><br><br>
-
-                <label for="description">Description:</label><br>
-                <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
-
-                <label for="time">Time:</label><br>
-                <input type="time" id="time" name="time" required><br><br>
-
-                <label for="date">Date:</label><br>
-                <input type="date" id="date" name="date" required><br><br>
-
-                <label for="location">Location:</label><br>
-                <input type="text" id="location" name="location" required><br><br>
-
-                <label for="contactPhone">Contact Phone:</label><br>
-                <input type="tel" id="contactPhone" name="contactPhone" required><br><br>
-
-                <label for="visibility">Visibility:</label><br>
+                <input id="addUniversity" class="input" type="text" placeholder="First Name">
+                <input id="addUserFirstName" class="input" type="text" placeholder="First Name">
+                <input id="addUserLastName" class="input" type="text" placeholder="Last Name">
+                <input id="addUserLogin" class="input" type="text" placeholder="Username">
+                <!-- <input class="input" type="text" placeholder="Email"> -->
+                <input id="addUserPassword" class="input" type="text" placeholder="Password">
                 <select id="visibility" name="visibility" required>
-                    <option value="Public">Public</option>
-                    <option value="Private">Private</option>
+                    <option value="SuperAdmin">SuperAdmin</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Student">Student</option>
                 </select><br><br>
-                <select id="visibility" name="visibility" required>
-                    <option value="isRSOEvent">Registered Student Organization Event</option>
-                    <option value="notRSOEvent">Unregistered Student Organization Event</option>
-                </select><br><br>
-                <label for="organizerID">Organizer ID:</label><br>
-                <input type="number" id="organizerID" name="organizerID" required><br><br>
+                <input id="addUserButton" type="submit" value="Add">
 
-                <input type="submit" value="Submit">
+                <span id="registerResult"></span>
             </form>
-        </div>
-        <div id="rso" class="feature" style="display: none;">
-            <h2>Registered Student Organizations</h2>
-            <form action="submit_event.php" method="post">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br><br>
-
-                <label for="organizerID">Organizer ID:</label><br>
-                <input type="number" id="organizerID" name="organizerID" required><br><br>
-
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-        <div id="comments" class="feature" style="display: none;">
-            <h2>Comments</h2>
-            <p>Content for Comments section.</p>
-        </div>
-        <div id="ratings" class="feature" style="display: none;">
-            <h2>Ratings</h2>
-            <p>Content for Ratings section.</p>
         </div>
     </section>
     <footer>
