@@ -362,7 +362,7 @@ function submitForm(userRole) {
     let userLastName = document.getElementById("userLastName").value;
     let userLogin = document.getElementById("userLogin").value;
     let userPassword = document.getElementById("userPassword").value;
-    let universityName = document.getElementById("universityName").value;
+    let userUniversityName = document.getElementById("userUniversityName").value;
 
     let formData = {
         FirstName: userFirstName,
@@ -370,11 +370,11 @@ function submitForm(userRole) {
         Login: userLogin,
         Password: userPassword,
         Role: userRole,
-        UniversityName: universityName
+        UniversityName: userUniversityName
     };
 
     let jsonPayload = JSON.stringify(formData);
-	document.getElementById("jsonPayload").innerHTML = universityName;
+	document.getElementById("jsonPayload").innerHTML = userUniversityName;
     document.getElementById("addUserResult").innerHTML = "";
 
     let xhr = new XMLHttpRequest();
