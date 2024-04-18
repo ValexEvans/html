@@ -405,11 +405,11 @@ function submitForm(userRole) {
 					clearFormFields();
 				} else {
 					// Error occurred on the server side
-					document.getElementById("addUserResult").innerHTML = "Error: " + response.message;
+					//document.getElementById("addUserResult").innerHTML = "Error: " + response.message;
 				}
 			} else {
 				// Error occurred in the request itself
-				document.getElementById("addUserResult").innerHTML = "Error: " + xhr.statusText;
+				//document.getElementById("addUserResult").innerHTML = "Error: " + xhr.statusText;
 			}
 		}
 	};
