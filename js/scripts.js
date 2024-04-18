@@ -387,16 +387,25 @@ function submitForm(userRole) {
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                document.getElementById("addUserResult").innerHTML = userRole + " added successfully";
-                clearFormFields();
-            } else {
-                document.getElementById("addUserResult").innerHTML = "Error: " + xhr.statusText;
-            }
-        }
-    };
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4) {
+			if (this.status == 200) {
+				// Check if the response indicates success
+				let response = JSON.parse(xhr.responseText);
+				if (response.success) {
+					// Data added successfully
+					document.getElementById("addUserResult").innerHTML = userRole + " added successfully";
+					clearFormFields();
+				} else {
+					// Error occurred on the server side
+					document.getElementById("addUserResult").innerHTML = "Error: " + response.message;
+				}
+			} else {
+				// Error occurred in the request itself
+				document.getElementById("addUserResult").innerHTML = "Error: " + xhr.statusText;
+			}
+		}
+	};
 
     xhr.send(jsonPayload);
 }
