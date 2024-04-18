@@ -417,46 +417,45 @@ function submitForm(userRole) {
 	xhr.send(jsonPayload);
 }
 
-
-
 function addRSO() {
 	let rsoName = document.getElementById("rsoName").value;
-	// Write a function that takes in the user ID and returns all of the admin information
 	var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
-	console.log("User ID:", storedUserID); // Use the user ID as needed
 
 	let formData = {
 		Name: rsoName,
 		UserID: storedUserID
 	};
 
-	// document.getElementById("RsoReval").innerHTML = storedUserID;
-
-
-
 	let jsonPayload = JSON.stringify(formData);
-	document.getElementById("addUserResult").innerHTML = "";
-
 	let xhr = new XMLHttpRequest();
 	let url = urlBase + '/AddRSO.' + extension;
 
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	xhr.onload = function () {
+		if (xhr.status >= 200 && xhr.status < 300) {
+			// Request was successful
+			document.getElementById("addRsoResult").textContent = "RSO added successfully";
+		} else {
+			// Request failed
+			document.getElementById("addRsoResult").textContent = "Failed to add RSO. Please try again later.";
+		}
+	};
+
+	xhr.onerror = function () {
+		// Network error
+		document.getElementById("addRsoResult").textContent = "Network error occurred. Please try again later.";
+	};
+
 	try {
-		xhr.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
-
-				document.getElementById("addRsoResult").innerHTML = "RSO added successfully";
-
-				// Optionally, you can redirect the user to the login page after successful registration
-				// window.location.reload();
-			}
-		};
 		xhr.send(jsonPayload);
 	} catch (err) {
-		document.getElementById("addRsoResult").innerHTML = err.message;
+		// Exception occurred
+		document.getElementById("addRsoResult").textContent = "An error occurred. Please try again later.";
 	}
 }
+
 
 
 
