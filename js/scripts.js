@@ -473,13 +473,13 @@ function joinRSO(RSOID) {
             // Handle response as needed
         }
     };
+	let formData = {
+		UserID: storedUserID,
+		RSOID: RSOID
+	};
+	let jsonPayload = JSON.stringify(formData);
 
-    let data = JSON.stringify({
-        UserID: storedUserID,
-        RSOID: RSOID
-    });
-
-    xhr.send(data);
+    xhr.send(jsonPayload);
 }
 
 
