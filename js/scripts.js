@@ -479,15 +479,15 @@ function joinRSO(RSOID) {
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try {
-        // xhr.onreadystatechange = function () {
-        //     if (this.readyState == 4 && this.status == 200) {
-        //         document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
-        //         // Optionally, you can redirect the user to the login page after successful registration
-        //         // window.location.reload();
-        //     }
-        // };
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
+                // Optionally, you can redirect the user to the login page after successful registration
+                // window.location.reload();
+            }
+        };
         xhr.send(jsonPayload);
-		document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
+		// document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
     } catch (err) {
         document.getElementById("joinRSOResult").innerHTML = err.message;
     }
