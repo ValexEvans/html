@@ -469,9 +469,6 @@ function joinRSO(RSOID) {
 	};
 
 	let jsonPayload = JSON.stringify(formData);
-
-	let urlBase = "http://yourdomain.com"; // Replace with your domain
-	let extension = "php"; // Replace with your file extension
 	let url = urlBase + '/JoinRSO.' + extension;
 
 	// AJAX call to send data to PHP script
