@@ -469,9 +469,10 @@ function joinRSO(RSOID) {
     };
 
     // Optional: Display the UserID and RSOID for testing purposes
-    document.getElementById("testJoinRSO").innerHTML = storedUserID + "," + RSOID;
+    // document.getElementById("testJoinRSO").innerHTML = storedUserID + "," + RSOID;
 
     let jsonPayload = JSON.stringify(formData);
+	document.getElementById("testJoinRSO").innerHTML = jsonPayload;
     let xhr = new XMLHttpRequest();
     let url = urlBase + '/JoinRSO.' + extension;
 
