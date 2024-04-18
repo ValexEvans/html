@@ -53,6 +53,7 @@ function doLogin() {
 
 
 				Role = jsonObject.Role;
+				saveCookie();
 				// Redirect the user based on the role
 				switch (Role) {
 					case 'Student':
@@ -69,7 +70,7 @@ function doLogin() {
 						console.error('Unexpected role:', Role);
 						break;
 				}
-				saveCookie();
+				
 
 
 			}
