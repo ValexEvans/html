@@ -460,46 +460,51 @@ function addRSO() {
 }
 
 function joinRSO(RSOID) {
-    let storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
+	let storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
 	let rsoID = String(RSOID); // Convert RSOID to string
 
-    let formData = {
-        UserID: storedUserID,
-        RSOID: rsoID
-    };
+	let formData = {
+		UserID: storedUserID,
+		RSOID: rsoID
+	};
 
-    // Optional: Display the UserID and RSOID for testing purposes
-    // document.getElementById("testJoinRSO").innerHTML = storedUserID + "," + RSOID;
+	let jsonPayload = JSON.stringify(formData);
 
-    let jsonPayload = JSON.stringify(formData);
-	document.getElementById("testJoinRSO").innerHTML = jsonPayload;
-    let xhr = new XMLHttpRequest();
-    let url = urlBase + '/JoinRSO.' + extension;
+	let urlBase = "http://yourdomain.com"; // Replace with your domain
+	let extension = "php"; // Replace with your file extension
+	let url = urlBase + '/JoinRSO.' + extension;
 
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    try {
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
-                // Optionally, you can redirect the user to the login page after successful registration
-                // window.location.reload();
-            }
-        };
-        xhr.send(jsonPayload);
-		// document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
-    } catch (err) {
-        document.getElementById("joinRSOResult").innerHTML = err.message;
-    }
-	
+	// AJAX call to send data to PHP script
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === XMLHttpRequest.DONE) {
+			if (xhr.status === 200) {
+				let response = JSON.parse(xhr.responseText);
+				if (response.error) {
+					// Handle error
+					console.error(response.error);
+				} else if (response.info) {
+					// Handle success
+					console.log(response.info);
+				}
+			} else {
+				// Handle other status codes
+				console.error("Error:", xhr.statusText);
+			}
+		}
+	};
+	xhr.send(jsonPayload);
 }
+
 
 
 // function joinRSO(RSOID) {
 // 	var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
 //     let url = urlBase + '/JoinRSO.' + extension;
 //     let xhr = new XMLHttpRequest();
-    
+
 //     xhr.open("POST", url, true);
 //     xhr.setRequestHeader("Content-Type", "application/json");
 
@@ -515,43 +520,43 @@ function joinRSO(RSOID) {
 // 	};
 // 	let jsonPayload = JSON.stringify(formData);
 // 	document.getElementById("testJoinRSO").innerHTML = storedUserID + "," +RSOID;
-	
+
 
 //     xhr.send(jsonPayload);
 // }
 
 
 function listRSO() {
-    // let RsoName = document.getElementById("RsoName").value;
+	// let RsoName = document.getElementById("RsoName").value;
 
-    let url = urlBase + '/ListRSO.' + extension;
+	let url = urlBase + '/ListRSO.' + extension;
 
-    let xhr = new XMLHttpRequest();
-    
-    xhr.open("GET", url, true);
+	let xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            let response = JSON.parse(xhr.responseText);
-            let html = '<table>'; // Start HTML table
-            
-            // Iterate through each RSO object in the response
-            response.forEach(function(rso) {
-                // Append HTML row for each RSO name
-                html += '<tr><td>' + rso.Name + '</td><td><button onclick="joinRSO(' + rso.RSOID + ')">Join</button></td></tr>';
-            });
-            
-            html += '</table>'; // End HTML table
-            
-            // Update the HTML element with the generated HTML rows
-            document.getElementById("createUniversityResult").innerHTML = html;
-            
-            // Optionally, you can redirect the user to the login page after successful registration
-            // window.location.reload();
-        }
-    };
+	xhr.open("GET", url, true);
 
-    xhr.send();
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			let response = JSON.parse(xhr.responseText);
+			let html = '<table>'; // Start HTML table
+
+			// Iterate through each RSO object in the response
+			response.forEach(function (rso) {
+				// Append HTML row for each RSO name
+				html += '<tr><td>' + rso.Name + '</td><td><button onclick="joinRSO(' + rso.RSOID + ')">Join</button></td></tr>';
+			});
+
+			html += '</table>'; // End HTML table
+
+			// Update the HTML element with the generated HTML rows
+			document.getElementById("createUniversityResult").innerHTML = html;
+
+			// Optionally, you can redirect the user to the login page after successful registration
+			// window.location.reload();
+		}
+	};
+
+	xhr.send();
 }
 
 
