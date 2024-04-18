@@ -485,9 +485,11 @@ function joinRSO(RSOID) {
         //     }
         // };
         xhr.send(jsonPayload);
+		document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
     } catch (err) {
         document.getElementById("joinRSOResult").innerHTML = err.message;
     }
+	
 }
 
 
