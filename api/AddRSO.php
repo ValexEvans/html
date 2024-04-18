@@ -3,27 +3,25 @@
 $inData = getRequestInfo();
 
 $name = $inData["Name"];
-$adminID = $inData["AdminID"];
-$universityID = $inData["UniversityID"];
+$userID = $inData["UserID"];
 
 $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");
 
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
-    // Check if the admin exists
-    if (!adminExists($conn, $adminID)) {
+    // Fetch Admin's AdminID and UniversityID using the given UserID
+    $adminInfo = fetchAdminInfo($conn, $userID);
+    if (!$adminInfo) {
         returnWithError("Admin not found.");
     } else {
-        // Check if the university exists
-        if (!universityExists($conn, $universityID)) {
-            returnWithError("University not found.");
-        } else {
-            // Insert RSO into RSOs table
-            insertRSO($conn, $name, $adminID, $universityID);
+        $adminID = $adminInfo["AdminID"];
+        $universityID = $adminInfo["UniversityID"];
+        
+        // Insert RSO into RSOs table
+        insertRSO($conn, $name, $adminID, $universityID);
 
-            returnWithInfo("RSO created successfully.");
-        }
+        returnWithInfo("RSO created successfully.");
     }
 }
 
@@ -43,20 +41,16 @@ function insertRSO($conn, $name, $adminID, $universityID) {
     $stmt->close();
 }
 
-function adminExists($conn, $adminID) {
-    $stmt = $conn->prepare("SELECT * FROM Admin WHERE AdminID = ?");
-    $stmt->bind_param("i", $adminID);
+function fetchAdminInfo($conn, $userID) {
+    $stmt = $conn->prepare("SELECT AdminID, UniversityID FROM Admin WHERE UserID = ?");
+    $stmt->bind_param("i", $userID);
     $stmt->execute();
     $result = $stmt->get_result();
-    return $result->num_rows > 0;
-}
-
-function universityExists($conn, $universityID) {
-    $stmt = $conn->prepare("SELECT * FROM University WHERE UniversityID = ?");
-    $stmt->bind_param("i", $universityID);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->num_rows > 0;
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return null;
+    }
 }
 
 function returnWithError($err) {

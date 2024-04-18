@@ -374,7 +374,7 @@ function submitForm(userRole) {
     };
 
     let jsonPayload = JSON.stringify(formData);
-	document.getElementById("jsonPayload").innerHTML = userUniversityName;
+	// document.getElementById("jsonPayload").innerHTML = userUniversityName;
     document.getElementById("addUserResult").innerHTML = "";
 
     let xhr = new XMLHttpRequest();
@@ -420,23 +420,18 @@ function addRSO() {
 
 	let formData = {
 		Name: rsoName,
-		AdminID: lastName,
-		UniversityID: login,
+		UserID: UserID
 	};
 
+	document.getElementById("RsoReval").innerHTML = UserID;
 
-	firstName = "";
-	lastName = "";
-	login = "";
-	password = "";
-	universityName = "";
-	userRole = "";
+
 
 	let jsonPayload = JSON.stringify(formData);
 	document.getElementById("addUserResult").innerHTML = "";
 
 	let xhr = new XMLHttpRequest();
-	let url = urlBase + '/AdminRegister.' + extension;
+	let url = urlBase + '/AddRSO.' + extension;
 
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -444,7 +439,7 @@ function addRSO() {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 
-				document.getElementById("addUserResult").innerHTML = "Admin added successfully";
+				document.getElementById("addRsoResult").innerHTML = "RSO added successfully";
 
 				// Optionally, you can redirect the user to the login page after successful registration
 				// window.location.reload();
@@ -452,7 +447,7 @@ function addRSO() {
 		};
 		xhr.send(jsonPayload);
 	} catch (err) {
-		document.getElementById("addUserResult").innerHTML = err.message;
+		document.getElementById("addRsoResult").innerHTML = err.message;
 	}
 }
 
