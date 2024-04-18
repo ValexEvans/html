@@ -469,7 +469,7 @@ function joinRSO(RSOID) {
 	};
 
 	let jsonPayload = JSON.stringify(formData);
-	let url = urlBase + '/JoinRSO.' + extension;
+	let url = urlBase + '/RegisterIntoRSO.' + extension;
 
 	// AJAX call to send data to PHP script
 	let xhr = new XMLHttpRequest();
