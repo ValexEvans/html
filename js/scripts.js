@@ -484,14 +484,14 @@ function joinRSO(RSOID) {
 				let response = JSON.parse(xhr.responseText);
 				if (response.error) {
 					// Handle error
-					console.error(response.error);
+					document.getElementById("joinRSOResult").innerHTML = response.error;
 				} else if (response.info) {
 					// Handle success
-					console.log(response.info);
+					document.getElementById("joinRSOResult").innerHTML = response.info;
 				}
 			} else {
 				// Handle other status codes
-				console.error("Error:", xhr.statusText);
+				document.getElementById("joinRSOResult").innerHTML = "Error:" + xhr.statusText;
 			}
 		}
 	};
