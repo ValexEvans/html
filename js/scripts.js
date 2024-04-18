@@ -460,11 +460,12 @@ function addRSO() {
 }
 
 function joinRSO(RSOID) {
-    var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
-
+    let storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
+	let rsoID = RSOID;
+	
     let formData = {
         UserID: storedUserID,
-        RSOID: RSOID
+        RSOID: rsoID
     };
 
     // Optional: Display the UserID and RSOID for testing purposes
