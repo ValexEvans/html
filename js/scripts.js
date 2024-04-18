@@ -460,6 +460,39 @@ function addRSO() {
 }
 
 
+function listRSO() {
+    // let RsoName = document.getElementById("RsoName").value;
+
+    let url = urlBase + '/ListRSO.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    
+    xhr.open("GET", url, true);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(xhr.responseText);
+            let html = '<table>'; // Start HTML table
+            
+            // Iterate through each RSO object in the response
+            response.forEach(function(rso) {
+                // Append HTML row for each RSO name
+                html += '<tr><td>' + rso.Name + '</td></tr>';
+            });
+            
+            html += '</table>'; // End HTML table
+            
+            // Update the HTML element with the generated HTML rows
+            document.getElementById("createUniversityResult").innerHTML = html;
+            
+            // Optionally, you can redirect the user to the login page after successful registration
+            // window.location.reload();
+        }
+    };
+
+    xhr.send();
+}
+
 
 
 

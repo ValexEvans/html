@@ -83,7 +83,8 @@
         <div id="rso" class="feature" style="display: none;">
 
             <h2>RSO List</h2>
-            <form action="submit_event.php" method="post">
+            <form>
+                <div id="createUniversityResult"></div>
             </form>
 
             <h2>Join RSO Request</h2>
@@ -122,6 +123,9 @@
             });
         }
 
+    </script>
+    <script>
+        window.onload = listRSO();
     </script>
 </body>
 
