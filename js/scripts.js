@@ -479,7 +479,7 @@ function joinRSO(RSOID) {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 
-				document.getElementById("createUniversityResult").innerHTML = "University added successfully";
+				document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
 
 				// Optionally, you can redirect the user to the login page after successful registration
 				// window.location.reload();
@@ -487,7 +487,7 @@ function joinRSO(RSOID) {
 		};
 		xhr.send(jsonPayload);
 	} catch (err) {
-		document.getElementById("createUniversityResult").innerHTML = err.message;
+		document.getElementById("joinRSOResult").innerHTML = err.message;
 	}
 }
 
