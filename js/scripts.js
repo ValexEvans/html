@@ -410,13 +410,7 @@ function submitForm(userRole) {
     xhr.send(jsonPayload);
 }
 
-function submitStudentForm() {
-    submitForm("Student");
-}
 
-function submitAdminForm() {
-    submitForm("Admin");
-}
 
 function addRSO() {
 	let rsoName = document.getElementById("rsoName").value;
