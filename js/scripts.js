@@ -350,25 +350,25 @@ function submitUniversityForm() {
 // }
 
 function clearFormFields() {
-    document.getElementById("firstName").value = "";
-    document.getElementById("lastName").value = "";
-    document.getElementById("login").value = "";
-    document.getElementById("password").value = "";
+    document.getElementById("userFirstName").value = "";
+    document.getElementById("userLastName").value = "";
+    document.getElementById("userLogin").value = "";
+    document.getElementById("userPassword").value = "";
     document.getElementById("universityName").value = "";
 }
 
 function submitForm(userRole) {
-    let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
-    let login = document.getElementById("login").value;
-    let password = document.getElementById("password").value;
+    let userFirstName = document.getElementById("userFirstName").value;
+    let userLastName = document.getElementById("userLastName").value;
+    let userLogin = document.getElementById("userLogin").value;
+    let userPassword = document.getElementById("userPassword").value;
     let universityName = document.getElementById("universityName").value;
 
     let formData = {
-        FirstName: firstName,
-        LastName: lastName,
-        Login: login,
-        Password: password,
+        FirstName: userFirstName,
+        LastName: userLastName,
+        Login: userLogin,
+        Password: userPassword,
         Role: userRole,
         UniversityName: universityName
     };
