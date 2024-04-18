@@ -64,32 +64,26 @@
             <form></form>
         </div>
         <div id="users" class="feature" style="display: none;">
-            <form id="addUserForm" onsubmit="return submitUserForm()">
-                <label for="role">Role:</label>
-                <select id="role" name="role" required>
-                    <option value="">Select Role</option>
-                    <option value="Student">Student</option>
-                    <option value="Admin">Admin</option>
-                </select><br>
-
+            <form id="userForm">
                 <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required><br>
-
+                <input type="text" id="firstName" required><br><br>
+        
                 <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required><br>
-
+                <input type="text" id="lastName" required><br><br>
+        
                 <label for="login">Login:</label>
-                <input type="text" id="login" name="login" required><br>
-
+                <input type="text" id="login" required><br><br>
+        
                 <label for="password">Password:</label>
-                <input type="text" id="password" name="password" required><br>
-
+                <input type="password" id="password" required><br><br>
+        
                 <label for="universityName">University Name:</label>
-                <input type="text" id="universityName" name="universityName" required><br>
-                <br>
-
-                <input type="submit" value="Add User">
+                <input type="text" id="universityName" required><br><br>
+        
+                <button type="button" onclick="submitStudentForm()">Submit as Student</button>
+                <button type="button" onclick="submitAdminForm()">Submit as Admin</button>
             </form>
+        
             <div id="addUserResult"></div>
         </div>
     </section>
@@ -120,20 +114,6 @@
         document.addEventListener("DOMContentLoaded", function () {
             fetchEvents();
         });
-    </script>
-    <script>
-        function submitUserForm() {
-            let role = document.getElementById("role").value;
-            if (role === "Student") {
-                // Call function to handle student submission
-                submitStudentForm();
-            } else if (role === "Admin") {
-                // Call function to handle admin submission
-                submitAdminForm();
-            } 
-            // Prevent default form submission
-            return false;
-        }
     </script>
 
 
