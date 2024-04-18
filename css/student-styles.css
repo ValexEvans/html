@@ -75,6 +75,6 @@ table tr:hover {
 
 /* Set the width of the first column */
 table td:first-child {
-    width: 80%;
+    width: 95%;
 }
 
