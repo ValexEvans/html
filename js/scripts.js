@@ -477,7 +477,7 @@ function listRSO() {
             // Iterate through each RSO object in the response
             response.forEach(function(rso) {
                 // Append HTML row for each RSO name
-                html += '<tr><td>' + rso.Name + '</td></tr>';
+                html += '<tr><td>' + rso.Name + '</td><td><button onclick="joinRSO(' + rso.RSOID + ')">Join</button></td></tr>';
             });
             
             html += '</table>'; // End HTML table
@@ -492,6 +492,7 @@ function listRSO() {
 
     xhr.send();
 }
+
 
 
 
