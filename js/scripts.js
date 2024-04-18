@@ -53,7 +53,9 @@ function doLogin() {
 
 
 				Role = jsonObject.Role;
-				saveCookie();
+				var userID = jsonObject.UserID; // Assuming you have the user's ID
+				localStorage.setItem("userID", userID); // Save user ID to local storage
+
 				// Redirect the user based on the role
 				switch (Role) {
 					case 'Student':
@@ -70,7 +72,9 @@ function doLogin() {
 						console.error('Unexpected role:', Role);
 						break;
 				}
-				
+				// saveCookie();
+
+
 
 
 			}
@@ -341,7 +345,7 @@ function submitUniversityForm() {
 // 	} catch (err) {
 // 		document.getElementById("addUserResult").innerHTML = err.message;
 // 	}
-	
+
 // 	firstName = "";
 // 	lastName = "";
 // 	login = "";
@@ -351,44 +355,44 @@ function submitUniversityForm() {
 // }
 
 function clearFormFields() {
-    document.getElementById("userFirstName").value = "";
-    document.getElementById("userLastName").value = "";
-    document.getElementById("userLogin").value = "";
-    document.getElementById("userPassword").value = "";
-    document.getElementById("universityName").value = "";
+	document.getElementById("userFirstName").value = "";
+	document.getElementById("userLastName").value = "";
+	document.getElementById("userLogin").value = "";
+	document.getElementById("userPassword").value = "";
+	document.getElementById("universityName").value = "";
 }
 
 function submitForm(userRole) {
-    let userFirstName = document.getElementById("userFirstName").value;
-    let userLastName = document.getElementById("userLastName").value;
-    let userLogin = document.getElementById("userLogin").value;
-    let userPassword = document.getElementById("userPassword").value;
-    let userUniversityName = document.getElementById("userUniversityName").value;
+	let userFirstName = document.getElementById("userFirstName").value;
+	let userLastName = document.getElementById("userLastName").value;
+	let userLogin = document.getElementById("userLogin").value;
+	let userPassword = document.getElementById("userPassword").value;
+	let userUniversityName = document.getElementById("userUniversityName").value;
 
-    let formData = {
-        FirstName: userFirstName,
-        LastName: userLastName,
-        Login: userLogin,
-        Password: userPassword,
-        Role: userRole,
-        UniversityName: userUniversityName
-    };
+	let formData = {
+		FirstName: userFirstName,
+		LastName: userLastName,
+		Login: userLogin,
+		Password: userPassword,
+		Role: userRole,
+		UniversityName: userUniversityName
+	};
 
-    let jsonPayload = JSON.stringify(formData);
+	let jsonPayload = JSON.stringify(formData);
 	// document.getElementById("jsonPayload").innerHTML = userUniversityName;
-    document.getElementById("addUserResult").innerHTML = "";
+	document.getElementById("addUserResult").innerHTML = "";
 
-    let xhr = new XMLHttpRequest();
-    let url = "";
+	let xhr = new XMLHttpRequest();
+	let url = "";
 
-    if (userRole === "Student") {
-        url = urlBase + '/StudentRegister.' + extension;
-    } else if (userRole === "Admin") {
-        url = urlBase + '/AdminRegister.' + extension;
-    }
+	if (userRole === "Student") {
+		url = urlBase + '/StudentRegister.' + extension;
+	} else if (userRole === "Admin") {
+		url = urlBase + '/AdminRegister.' + extension;
+	}
 
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	xhr.onreadystatechange = function () {
 		if (this.readyState == 4) {
@@ -410,7 +414,7 @@ function submitForm(userRole) {
 		}
 	};
 
-    xhr.send(jsonPayload);
+	xhr.send(jsonPayload);
 }
 
 
@@ -418,10 +422,12 @@ function submitForm(userRole) {
 function addRSO() {
 	let rsoName = document.getElementById("rsoName").value;
 	// Write a function that takes in the user ID and returns all of the admin information
+	var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
+	console.log("User ID:", storedUserID); // Use the user ID as needed
 
 	let formData = {
 		Name: rsoName,
-		UserID: UserID
+		UserID: storedUserID
 	};
 
 	document.getElementById("RsoReval").innerHTML = UserID;
