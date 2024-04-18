@@ -379,7 +379,7 @@ function submitForm(userRole) {
 	};
 
 	let jsonPayload = JSON.stringify(formData);
-	document.getElementById("jsonPayload").innerHTML = userFirstName+userLastName+userLogin+userPassword+userRole+userUniversityName;
+	// document.getElementById("jsonPayload").innerHTML = userFirstName+userLastName+userLogin+userPassword+userRole+userUniversityName;
 	document.getElementById("addUserResult").innerHTML = "";
 
 	let xhr = new XMLHttpRequest();
