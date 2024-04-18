@@ -15,6 +15,7 @@ let ContactPhone = "";
 let Visibility = "";
 let OrganizerID = 0;
 
+// doLogin will log in a student, admin, or super-admin
 function doLogin() {
 	UserID = 0;
 	FirstName = "";
@@ -80,7 +81,6 @@ function doLogin() {
 	}
 
 }
-
 // doRegister will register all as a student
 function doRegister() {
 	let FirstName = document.getElementById("registerFirstName").value;
@@ -109,9 +109,7 @@ function doRegister() {
 	Role = "";
 
 
-
 	let url = urlBase + '/Register.' + extension;
-
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -137,7 +135,6 @@ function doRegister() {
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
 }
-
 
 
 function fetchEvents() {
@@ -317,6 +314,48 @@ function submitAdminForm() {
 		Password: password,
 		Role: userRole,
 		UniversityName: universityName
+	};
+
+
+	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("addUserResult").innerHTML = "";
+
+	let xhr = new XMLHttpRequest();
+	let url = urlBase + '/AdminRegister.' + extension;
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+
+				document.getElementById("addUserResult").innerHTML = "Admin added successfully";
+
+				// Optionally, you can redirect the user to the login page after successful registration
+				// window.location.reload();
+			}
+		};
+		xhr.send(jsonPayload);
+	} catch (err) {
+		document.getElementById("addUserResult").innerHTML = err.message;
+	}
+	
+	firstName = "";
+	lastName = "";
+	login = "";
+	password = "";
+	universityName = "";
+	userRole = "";
+}
+
+function addRSO() {
+	let rsoName = document.getElementById("rsoName").value;
+	// Write a function that takes in the user ID and returns all of the admin information
+
+	let formData = {
+		Name: rsoName,
+		AdminID: lastName,
+		UniversityID: login,
 	};
 
 

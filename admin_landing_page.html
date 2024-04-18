@@ -76,13 +76,9 @@
             </form>
             <h2>Add RSO</h2>
             <form action="submit_event.php" method="post">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br><br>
-
-                <label for="organizerID">Organizer ID:</label><br>
-                <input type="number" id="organizerID" name="organizerID" required><br><br>
-
-                <input type="submit" value="Submit">
+                <label for="rsoName">Name:</label><br>
+                <input type="text" id="rsoName" name="rsoName" required><br><br>
+                <button type="button" onclick="addRSO()">Submit</button>
             </form>
         </div>
     </section>
