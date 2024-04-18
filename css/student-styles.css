@@ -72,3 +72,9 @@ table tr:nth-child(even) {
 table tr:hover {
     background-color: #ddd;
 }
+
+/* Set the width of the first column */
+table td:first-child {
+    width: 80%;
+}
+
