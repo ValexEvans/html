@@ -476,23 +476,7 @@ function joinRSO(RSOID) {
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === XMLHttpRequest.DONE) {
-			if (xhr.status === 200) {
-				let response = JSON.parse(xhr.responseText);
-				if (response.error) {
-					// Handle error
-					document.getElementById("joinRSOResult").innerHTML = response.error;
-				} else if (response.info) {
-					// Handle success
-					document.getElementById("joinRSOResult").innerHTML = response.info;
-				}
-			} else {
-				// Handle other status codes
-				document.getElementById("joinRSOResult").innerHTML = "Error:" + xhr.statusText;
-			}
-		}
-	};
+
 	xhr.send(jsonPayload);
 }
 
