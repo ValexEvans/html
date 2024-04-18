@@ -475,27 +475,19 @@ function joinRSO(RSOID) {
 
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-	xhr.onload = function () {
-		if (xhr.status >= 200 && xhr.status < 300) {
-			// Request was successful
-			document.getElementById("joinRSOResult").textContent = "RSO added successfully";
-		} else {
-			// Request failed
-			document.getElementById("joinRSOResult").textContent = "Failed to add RSO. Please try again later.";
-		}
-	};
-
-	xhr.onerror = function () {
-		// Network error
-		document.getElementById("joinRSOResult").textContent = "Network error occurred. Please try again later.";
-	};
-
 	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+
+				document.getElementById("createUniversityResult").innerHTML = "University added successfully";
+
+				// Optionally, you can redirect the user to the login page after successful registration
+				// window.location.reload();
+			}
+		};
 		xhr.send(jsonPayload);
 	} catch (err) {
-		// Exception occurred
-		document.getElementById("joinRSOResult").textContent = "An error occurred. Please try again later.";
+		document.getElementById("createUniversityResult").innerHTML = err.message;
 	}
 }
 
