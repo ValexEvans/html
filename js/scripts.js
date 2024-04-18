@@ -430,7 +430,7 @@ function addRSO() {
 		UserID: storedUserID
 	};
 
-	document.getElementById("RsoReval").innerHTML = UserID;
+	document.getElementById("RsoReval").innerHTML = storedUserID;
 
 
 
