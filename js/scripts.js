@@ -401,7 +401,7 @@ function submitForm(userRole) {
 				let response = JSON.parse(xhr.responseText);
 				if (response.success) {
 					// Data added successfully
-					document.getElementById("addUserResult").innerHTML = userRole + " added successfully";
+					// document.getElementById("addUserResult").innerHTML = userRole + " added successfully";
 					clearFormFields();
 				} else {
 					// Error occurred on the server side
@@ -411,6 +411,7 @@ function submitForm(userRole) {
 				// Error occurred in the request itself
 				//document.getElementById("addUserResult").innerHTML = "Error: " + xhr.statusText;
 			}
+			document.getElementById("addUserResult").innerHTML = userRole + " added successfully";
 		}
 	};
 
