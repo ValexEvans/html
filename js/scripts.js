@@ -224,6 +224,7 @@ function submitUniversityForm() {
 	};
 
 	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("jsonPayload").innerText = jsonPayload;
 	document.getElementById("createUniversityResult").innerHTML = "";
 
 	// for (let i = 0; i < pictures.length; i++) {
