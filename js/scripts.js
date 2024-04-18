@@ -460,36 +460,36 @@ function addRSO() {
 }
 
 function joinRSO(RSOID) {
-	var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
+    var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
 
-	let formData = {
-		UserID: storedUserID,
-		RSOID: RSOID
-	};
+    let formData = {
+        UserID: storedUserID,
+        RSOID: RSOID
+    };
 
-	document.getElementById("testJoinRSO").innerHTML = storedUserID + "," +RSOID;
+    // Optional: Display the UserID and RSOID for testing purposes
+    document.getElementById("testJoinRSO").innerHTML = storedUserID + "," + RSOID;
 
-	let jsonPayload = JSON.stringify(formData);
-	let xhr = new XMLHttpRequest();
-	let url = urlBase + '/JoinRSO.' + extension;
+    let jsonPayload = JSON.stringify(formData);
+    let xhr = new XMLHttpRequest();
+    let url = urlBase + '/JoinRSO.' + extension;
 
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try {
-		xhr.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
-
-				document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
-
-				// Optionally, you can redirect the user to the login page after successful registration
-				// window.location.reload();
-			}
-		};
-		xhr.send(jsonPayload);
-	} catch (err) {
-		document.getElementById("joinRSOResult").innerHTML = err.message;
-	}
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("joinRSOResult").innerHTML = "Joined RSO successfully";
+                // Optionally, you can redirect the user to the login page after successful registration
+                // window.location.reload();
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("joinRSOResult").innerHTML = err.message;
+    }
 }
+
 
 // function joinRSO(RSOID) {
 // 	var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
