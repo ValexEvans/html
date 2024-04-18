@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <link rel="stylesheet" href="/css/landing-styles.css">
+    <link rel="stylesheet" href="/css/student-styles.css">
     <script src="/js/scripts.js"></script>
 
 
@@ -84,7 +85,9 @@
 
             <h2>RSO List</h2>
             <form>
-                <div id="createUniversityResult"></div>
+                <div id="createUniversityResult" class="table-container">
+                    <!-- RSO list will be displayed here -->
+                </div>
             </form>
 
             <h2>Join RSO Request</h2>
@@ -125,6 +128,7 @@
 
     </script>
     <script>
+        // Call the fetchEvents function when the page loads
         window.onload = listRSO();
     </script>
 </body>
