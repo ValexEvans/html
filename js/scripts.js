@@ -478,6 +478,8 @@ function joinRSO(RSOID) {
 		RSOID: RSOID
 	};
 	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("testJoinRSO").innerHTML = storedUserID+RSOID;
+	
 
     xhr.send(jsonPayload);
 }
