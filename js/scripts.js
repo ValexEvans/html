@@ -17,7 +17,7 @@ let OrganizerID = 0;
 
 // doLogin will log in a student, admin, or super-admin
 function doLogin() {
-	UserID = 0;
+	// UserID = 0;
 	FirstName = "";
 	LastName = "";
 	Role = "";
