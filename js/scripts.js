@@ -374,7 +374,7 @@ function submitForm(userRole) {
     };
 
     let jsonPayload = JSON.stringify(formData);
-	document.getElementById("jsonPayload").innerHTML = userRole;
+	document.getElementById("jsonPayload").innerHTML = userFirstName;
     document.getElementById("addUserResult").innerHTML = "";
 
     let xhr = new XMLHttpRequest();
