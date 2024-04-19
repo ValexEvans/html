@@ -12,6 +12,7 @@ $Date = "";
 $Location = "";
 $ContactPhone = "";
 $EventType = "";
+$UniversityID = 0;
 
 $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");
 if ($conn->connect_error) {
@@ -27,6 +28,7 @@ if ($conn->connect_error) {
     $Location = $inData["location"];
     $ContactPhone = $inData["contact_phone"];
     $EventType = $inData["event_type"];
+    $UniversityID = $inData["university_id"];
 
     $stmt = $conn->prepare("INSERT INTO Events (Name, Category, Description, Time, Date, Location, ContactPhone, EventType, OrganizerID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssssi", $EventName, $Category, $Description, $Time, $Date, $Location, $ContactPhone, $EventType, $OrganizerID);
@@ -35,19 +37,27 @@ if ($conn->connect_error) {
     // Get the EventID of the newly added event
     $EventID = $stmt->insert_id;
 
+
+
     // Depending on EventType, insert into respective table
     switch ($EventType) {
         case 'Public':
-            $sql = "INSERT INTO Public_Events (EventID, SuperAdminID, UniversityID) 
-                    VALUES ('".$EventID."', 1, 1)"; // Assuming SuperAdminID and UniversityID
+            $SuperAdminID = $OrganizerID;
+            $stmt = $conn->prepare("INSERT INTO Public_Events (EventID, SuperAdminID, UniversityID) VALUES (?, ?, ?)");
+            $stmt->bind_param("iii", $EventID, $SuperAdminID, $UniversityID);
+            $stmt->execute();
             break;
         case 'Private':
-            $sql = "INSERT INTO Private_Events (EventID, AdminID, UniversityID) 
-                    VALUES ('".$EventID."', 1, 1)"; // Assuming AdminID and UniversityID
+            $AdminID = $OrganizerID;
+            $stmt = $conn->prepare("INSERT INTO Private_Events (EventID, AdminID, UniversityID) VALUES (?, ?, ?)");
+            $stmt->bind_param("iii", $EventID, $AdminID, $UniversityID);
+            $stmt->execute();
             break;
         case 'RSO':
-            $sql = "INSERT INTO RSO_Events (EventID, RSOID, AdminID, UniversityID) 
-                    VALUES ('".$EventID."', 1, 1, 1)"; // Assuming RSOID, AdminID, and UniversityID
+            $AdminID = $OrganizerID;
+            $stmt = $conn->prepare("INSERT INTO RSO_Events (EventID, AdminID, UniversityID) VALUES (?, ?, ?)");
+            $stmt->bind_param("iii", $EventID, $AdminID, $UniversityID);
+            $stmt->execute();
             break;
         default:
             echo "Invalid EventType";
