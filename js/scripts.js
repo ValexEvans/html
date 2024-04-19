@@ -630,3 +630,7 @@ function showContent(contentId, event) {
 		}
 	});
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+	fetchEvents();
+});
