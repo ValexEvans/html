@@ -207,7 +207,7 @@ function addEvent() {
 	};
 
 	let jsonPayload = JSON.stringify(tmp);
-	document.getElementById("addEventTest").innerHTML = jsonPayload;
+	// document.getElementById("addEventTest").innerHTML = jsonPayload;
 
 	let url = urlBase + '/AddEvent.' + extension;
 
@@ -231,7 +231,7 @@ function addEvent() {
 
 	setTimeout(function() {
 		window.location.reload();
-		// clearFormFields();
+		clearFormFields();
 	}, 1000); // 1000 milliseconds = 1 second
 	
 }
