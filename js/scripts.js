@@ -191,6 +191,7 @@ function addEvent() {
 	let eventType = document.getElementById('eventType').value;
 	let eventUniversity = parseInt(document.getElementById('eventUniversity').value, 10);
 	let request = true;
+
 	let tmp =
 	{
 		event_name: eventName,
@@ -204,6 +205,7 @@ function addEvent() {
 		university_id: eventUniversity,
 		request: request
 	};
+
 	let jsonPayload = JSON.stringify(tmp);
 	document.getElementById("addEventTest").innerHTML = jsonPayload;
 
@@ -220,13 +222,13 @@ function addEvent() {
 			}
 		};
 		xhr.send(jsonPayload);
-		window.location.reload();
 		clearFormFields();
 	}
 	catch (err) {
 		// console.error('Error adding events:', err);
 		document.getElementById("addEventReval").innerHTML = "Error adding events";
 	}
+	window.location.reload();
 }
 
 
