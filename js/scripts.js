@@ -460,7 +460,7 @@ function addRSO() {
 }
 
 function joinRSO(RSOID) {
-	let storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
+	let storedUserID = String(localStorage.getItem("userID")); // Retrieve user ID from local storage
 	let rsoID = String(RSOID); // Convert RSOID to string
 	
 	let formData = {
