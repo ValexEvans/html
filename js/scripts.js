@@ -176,7 +176,7 @@ function addEvent() {
 	let eventLocation = document.getElementById('eventLocation').value;
 	let eventPhone = document.getElementById('eventPhone').value;
 	let eventType = document.getElementById('eventType').value;
-	let eventUniversity = parseInt(document.getElementById('eventUniversity').value, 10);
+	let eventUniversity = parseInt(document.getElementById('UniversitySelectionList').value, 10);
 	let request = true;
 
 	let tmp =
@@ -631,7 +631,7 @@ function joinRSO(RSOID) {
 <option value="RSO">RSO (Registered Student Organization)</option>
 </select><br><br> */}
 
-function RsoFormSelection() {
+function listRsoSelect() {
     let url = urlBase + '/ListRSO.' + extension;
     let xhr = new XMLHttpRequest();
 
@@ -661,6 +661,39 @@ function RsoFormSelection() {
 
     xhr.send();
 }
+
+
+function listUniversitySelect() {
+    let url = urlBase + '/ListUniversities.' + extension;
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url, true);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(xhr.responseText);
+            let selectOptions = '<option value="">Select University</option>'; // Default option
+
+
+            // Iterate through each RSO object in the response
+            response.forEach(function (rso) {
+               
+                // Add option for select element
+                selectOptions += '<option value="' + rso.Name + '" variable="' + rso.UniversityID +  '">' + rso.Name + '</option>';
+            });
+
+
+
+
+
+            // Update the select element with options
+            document.getElementById("UniversitySelectionList").innerHTML = selectOptions;
+        }
+    };
+
+    xhr.send();
+}
+
 
 
 

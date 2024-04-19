@@ -60,8 +60,11 @@
                 <label for="eventPhone">Contact Phone:</label><br>
                 <input type="tel" id="eventPhone" name="eventPhone" required><br><br>
 
-                <label for="eventUniversity">University ID:</label><br>
-                <input type="number" id="eventUniversity" name="eventUniversity" required><br><br>
+                <label for="UniversitySelectionList">University ID:</label><br>
+                <select id="UniversitySelectionList" name="UniversitySelectionList" required>
+                    <!-- RSO list will be displayed here -->
+                </select><br><br>
+                <!-- <input type="number" id="eventUniversity" name="eventUniversity" required><br><br> -->
 
                 <label for="eventType">Event Type:</label><br>
                 
@@ -104,6 +107,11 @@
         <p>&copy; 2024 University Event Hub</p>
     </footer>
     <script>
+        // Call the fetchEvents function when the page loads
+        window.onload = listRsoSelect();
+        window.onload = listUniversitySelect();
+    </script>
+    <script>
 
         function showContent(contentId, event) {
             event.preventDefault(); // Prevent default behavior of anchor tag
@@ -116,9 +124,6 @@
                 }
             });
         }
-
-        // Call the fetchEvents function when the page loads
-        window.onload = RsoFormSelection();
 
         function toggleRSOSelection() {
             var eventTypeSelect = document.getElementById("eventType");
