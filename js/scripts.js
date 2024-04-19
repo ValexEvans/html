@@ -165,31 +165,32 @@ function doRegister() {
 
 
 function addEvent() {
-	let storedUserID = localStorage.getItem("userRole"); 
-	let event_name = document.getElementById('eventName');
-	let category = document.getElementById('eventCategory');
-	let description = document.getElementById('eventDescription');
-	let time = document.getElementById('eventTime');
-	let date = document.getElementById('eventDate');
-	let location = document.getElementById('eventLocation');
-	let contact_phone = document.getElementById('eventPhone');
-	let event_type = document.getElementById('eventType');
-	let university_id = document.getElementById('eventUniversity');
+	let storedUserID = localStorage.getItem("userRole");
+	let eventName = document.getElementById('eventName');
+	let eventCategory = document.getElementById('eventCategory');
+	let eventDescription = document.getElementById('eventDescription');
+	let eventTime = document.getElementById('eventTime');
+	let eventDate = document.getElementById('eventDate');
+	let eventLocation = document.getElementById('eventLocation');
+	let eventPhone = document.getElementById('eventPhone');
+	let eventType = document.getElementById('eventType');
+	let eventUniversity = parseInt(document.getElementById('eventUniversity').value, 10);
 	let request = true;
 	let tmp =
 	{
-		event_name: event_name,
-		category: category,
-		description: description,
-		time: time,
-		date: date,
-		location: location,
-		contact_phone: contact_phone,
-		event_type: event_type,
-		university_id: university_id,
+		event_name: eventName,
+		category: eventCategory,
+		description: eventDescription,
+		time: eventTime,
+		date: eventDate,
+		location: eventLocation,
+		contact_phone: eventPhone,
+		event_type: eventType,
+		university_id: eventUniversity,
 		request: request
 	};
 	let jsonPayload = JSON.stringify(tmp);
+	document.getElementById("addEventTest").innerHTML = jsonPayload;
 
 	let url = urlBase + '/AddEvent.' + extension;
 
