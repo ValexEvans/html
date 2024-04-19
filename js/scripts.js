@@ -228,8 +228,12 @@ function addEvent() {
 		// console.error('Error adding events:', err);
 		document.getElementById("addEventReval").innerHTML = "Error adding events";
 	}
-	window.location.reload();
-	clearFormFields();
+
+	setTimeout(function() {
+		window.location.reload();
+		// clearFormFields();
+	}, 1000); // 1000 milliseconds = 1 second
+	
 }
 
 
