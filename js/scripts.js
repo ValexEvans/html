@@ -462,17 +462,17 @@ function addRSO() {
 function joinRSO(RSOID) {
 	let storedUserID = String(localStorage.getItem("userID")); // Retrieve user ID from local storage
 	let rsoID = String(RSOID); // Convert RSOID to string
-	
+
 	let formData = {
 		UserID: storedUserID,
 		RsoID: rsoID
 	};
-	
+
 	let jsonPayload = JSON.stringify(formData);
 
 	storedUserID = "";
 	rsoID = "";
-	
+
 	let url = urlBase + '/RegisterIntoRSO.' + extension;
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -480,7 +480,7 @@ function joinRSO(RSOID) {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				
+
 				let jsonObject = JSON.parse(xhr.responseText);
 				let joinRSOInfo = jsonObject.info;
 
@@ -618,3 +618,15 @@ function doLogout() {
 //         content1.classList.add('active');
 //     }
 // }
+
+function showContent(contentId, event) {
+	event.preventDefault(); // Prevent default behavior of anchor tag
+	const features = document.querySelectorAll('.feature');
+	features.forEach(feature => {
+		if (feature.id === contentId) {
+			feature.style.display = 'block';
+		} else {
+			feature.style.display = 'none';
+		}
+	});
+}
