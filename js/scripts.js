@@ -647,7 +647,7 @@ function RsoFormSelection() {
             response.forEach(function (rso) {
                
                 // Add option for select element
-                selectOptions += '<option value="' + rso.Name + '" variable="' rso.RSOID +  '">' + rso.Name + '</option>';
+                selectOptions += '<option value="' + rso.Name + '" variable="' + rso.RSOID +  '">' + rso.Name + '</option>';
             });
 
 
