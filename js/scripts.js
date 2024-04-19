@@ -179,9 +179,9 @@ function displayEvents(events) {
 
 
 function createEventElement(event) {
-	if (!event.Request) {
-        return null;
-    }
+	// if (!event.Request) {
+    //     return null;
+    // }
 
 
 	const eventElement = document.createElement('div');
