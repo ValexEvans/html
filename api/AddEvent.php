@@ -11,24 +11,13 @@ $Time = "";
 $Date = "";
 $Location = "";
 $ContactPhone = "";
-$Visibility = "";
+$EventType = "";
 
 $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
-    // Assuming the organizer is already logged in and their UserID is available
-    // `EventID` INT AUTO_INCREMENT PRIMARY KEY,
-    // `Name` VARCHAR(255) NOT NULL DEFAULT '' ,
-    // `Category` VARCHAR(255) NOT NULL DEFAULT '' ,
-    // `Description` TEXT,
-    // `Time` TIME,
-    // `Date` DATE,
-    // `Location` VARCHAR(255) NOT NULL DEFAULT '' ,
-    // `ContactPhone` VARCHAR(20) NOT NULL DEFAULT '' ,
-    // `EventType` ENUM('Public', 'Private', 'RSO') NOT NULL,
-	// `Request` BOOL,
-    // `OrganizerID` INT -- not needed
+
     $OrganizerID = $inData["organizer_id"];
     $EventName = $inData["event_name"];
     $Category = $inData["category"];
@@ -46,10 +35,33 @@ if ($conn->connect_error) {
     // Get the EventID of the newly added event
     $EventID = $stmt->insert_id;
 
+    // Depending on EventType, insert into respective table
+    switch ($EventType) {
+        case 'Public':
+            $sql = "INSERT INTO Public_Events (EventID, SuperAdminID, UniversityID) 
+                    VALUES ('".$EventID."', 1, 1)"; // Assuming SuperAdminID and UniversityID
+            break;
+        case 'Private':
+            $sql = "INSERT INTO Private_Events (EventID, AdminID, UniversityID) 
+                    VALUES ('".$EventID."', 1, 1)"; // Assuming AdminID and UniversityID
+            break;
+        case 'RSO':
+            $sql = "INSERT INTO RSO_Events (EventID, RSOID, AdminID, UniversityID) 
+                    VALUES ('".$EventID."', 1, 1, 1)"; // Assuming RSOID, AdminID, and UniversityID
+            break;
+        default:
+            echo "Invalid EventType";
+    }
+
+    // Execute the respective SQL statement
+    if ($conn->query($sql) === TRUE) {
+        returnWithInfo("Event added successfully", $EventID);
+    } else {
+        returnWithError($conn->error);
+    }
+
     $stmt->close();
     $conn->close();
-
-    returnWithInfo("Event added successfully", $EventID);
 }
 
 function getRequestInfo()
