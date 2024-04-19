@@ -641,7 +641,7 @@ function RsoFormSelection() {
         if (this.readyState == 4 && this.status == 200) {
             let response = JSON.parse(xhr.responseText);
             let selectOptions = '<option value="">Select RSO</option>'; // Default option
-            let html = ''; // Start HTML table
+
 
             // Iterate through each RSO object in the response
             response.forEach(function (rso) {
@@ -650,10 +650,9 @@ function RsoFormSelection() {
                 selectOptions += '<option value="' + rso.Name + '" variable="' rso.RSOID +  '">' + rso.Name + '</option>';
             });
 
-            html += ''; // End HTML table
 
-            // Update the HTML element with the generated HTML rows
-            document.getElementById("rsoSelectionList").innerHTML = html;
+
+
 
             // Update the select element with options
             document.getElementById("rsoSelectionList").innerHTML = selectOptions;
