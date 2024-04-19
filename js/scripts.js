@@ -146,19 +146,6 @@ function doRegister() {
 }
 
 
-// {
-//     "organizer_id": 7, // student, addmin, or super admin id
-//     "event_name": "Sample Event",
-//     "category": "Sample Category",
-//     "description": "Sample Description",
-//     "time": "12:00:00",
-//     "date": "2024-04-19",
-//     "location": "Sample Location",
-//     "contact_phone": "1234567890",
-//     "event_type": "RSO",
-//     "university_id": 2,
-//     "request": true
-// }
 
 
 function clearFormFields() {
@@ -638,6 +625,41 @@ function joinRSO(RSOID) {
 //     xhr.send(jsonPayload);
 // }
 
+function RsoFormSelection() {
+    let url = urlBase + '/ListRSO.' + extension;
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url, true);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(xhr.responseText);
+            let selectOptions = '<option value="">Select RSO</option>'; // Default option
+            let html = '<table>'; // Start HTML table
+
+            // Iterate through each RSO object in the response
+            response.forEach(function (rso) {
+                // Append HTML row for each RSO name
+                html += '<tr><td>' + rso.Name + '</td><td><button onclick="joinRSO(' + rso.RSOID + ')">Join</button></td></tr>';
+
+                // Add option for select element
+                selectOptions += '<option value="' + rso.Name + '">' + rso.Name + '</option>';
+            });
+
+            html += '</table>'; // End HTML table
+
+            // Update the HTML element with the generated HTML rows
+            document.getElementById("rsoSelectionList").innerHTML = html;
+
+            // Update the select element with options
+            document.getElementById("rsoSelectionList").innerHTML = selectOptions;
+        }
+    };
+
+    xhr.send();
+}
+
+
 
 function listRSO() {
 	// let RsoName = document.getElementById("RsoName").value;
@@ -662,7 +684,7 @@ function listRSO() {
 			html += '</table>'; // End HTML table
 
 			// Update the HTML element with the generated HTML rows
-			document.getElementById("createUniversityResult").innerHTML = html;
+			document.getElementById("listRsoResult").innerHTML = html;
 
 			// Optionally, you can redirect the user to the login page after successful registration
 			// window.location.reload();
