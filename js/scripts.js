@@ -485,7 +485,7 @@ function joinRSO(RSOID) {
 			}
 		}
 	};
-	
+	document.getElementById("testJoinRSO").innerHTML = jsonPayload;
 	xhr.send(jsonPayload);
 }
 
