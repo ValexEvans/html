@@ -64,11 +64,12 @@
                 <input type="number" id="eventUniversity" name="eventUniversity" required><br><br>
 
                 <label for="eventType">Event Type:</label><br>
-                <select id="eventType" name="eventType" required>
+                <select id="eventType" name="eventType" required style="display: none;">
                     <option value="Public">Public (Will request SuperAdmin)</option>
                     <option value="Private">Private (University)</option>
                     <option value="RSO">RSO (Registered Student Organization)</option>
                 </select><br><br>
+
                 <select id="rsoSelectionList" name="rsoSelectionList" required>
                     <!-- RSO list will be displayed here -->
                 </select>
@@ -102,10 +103,6 @@
         <p>&copy; 2024 University Event Hub</p>
     </footer>
     <script>
-        // const urlBase = "143.198.135.118";
-        // const extension = "php";
-
-        // Include your JavaScript code here
 
         function showContent(contentId, event) {
             event.preventDefault(); // Prevent default behavior of anchor tag
@@ -119,14 +116,20 @@
             });
         }
 
-    </script>
-    <script>
         // Call the fetchEvents function when the page loads
         window.onload = RsoFormSelection();
+
+        function toggleRSOSelection() {
+            var eventTypeSelect = document.getElementById("eventType");
+            var rsoSelectionList = document.getElementById("rsoSelectionList");
+
+            if (eventTypeSelect.value === "RSO") {
+                rsoSelectionList.style.display = "block";
+            } else {
+                rsoSelectionList.style.display = "none";
+            }
+        }
     </script>
-    <!-- <script>
-        window.onload = readCookie;
-    </script> -->
 </body>
 
 </html>
