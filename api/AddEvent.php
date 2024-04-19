@@ -64,7 +64,7 @@ if ($conn->connect_error) {
     }
 
     // Execute the respective SQL statement
-    if ($conn->query($sql) === TRUE) {
+    if ($stmt->affected_rows > 0) {
         returnWithInfo("Event added successfully", $EventID);
     } else {
         returnWithError($conn->error);
