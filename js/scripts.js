@@ -172,10 +172,10 @@ function clearFormFields() {
 	document.getElementById("eventPhone").value = "";
 	document.getElementById("eventType").value = "";
 	// for submitUniversityForm
-	document.getElementById("universityName").value = "";
-	document.getElementById("location").value = "";
-	document.getElementById("description").value = "";
-	document.getElementById("numberOfStudents").value = "";
+	// document.getElementById("universityName").value = "";
+	// document.getElementById("location").value = "";
+	// document.getElementById("description").value = "";
+	// document.getElementById("numberOfStudents").value = "";
 }
 
 
@@ -222,13 +222,13 @@ function addEvent() {
 			}
 		};
 		xhr.send(jsonPayload);
-		clearFormFields();
+		//clearFormFields();
 	}
 	catch (err) {
 		// console.error('Error adding events:', err);
 		document.getElementById("addEventReval").innerHTML = "Error adding events";
 	}
-	window.location.reload();
+	//window.location.reload();
 }
 
 
