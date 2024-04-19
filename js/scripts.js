@@ -483,29 +483,12 @@ function joinRSO(RSOID) {
 				document.getElementById("joinRSOResult").innerHTML = joinRSOInfo;
 			}
 		};
+		document.getElementById("testJoinRSO").innerHTML = jsonPayload;
 		xhr.send(jsonPayload);
 	} catch (err) {
 		document.getElementById("joinRSOResult").innerHTML = err.message;
 	}
 
-
-
-
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === XMLHttpRequest.DONE) {
-			if (xhr.status === 200) {
-				// Request was successful, handle response
-				console.log(xhr.responseText); // Assuming you want to log the response
-			} else {
-				// Handle errors
-				console.error(xhr.statusText);
-			}
-		}
-	};
-	document.getElementById("testJoinRSO").innerHTML = jsonPayload;
-	xhr.send(jsonPayload);
 }
 
 
