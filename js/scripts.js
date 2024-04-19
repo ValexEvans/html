@@ -166,15 +166,15 @@ function doRegister() {
 
 function addEvent() {
 	let storedUserID = localStorage.getItem("userRole"); 
-	let event_name = document.getElementById('event_name');
-	let category = document.getElementById('category');
-	let description = document.getElementById('description');
-	let time = document.getElementById('time');
-	let date = document.getElementById('date');
-	let location = document.getElementById('location');
-	let contact_phone = document.getElementById('contact_phone');
-	let event_type = document.getElementById('event_type');
-	let university_id = document.getElementById('university_id');
+	let event_name = document.getElementById('eventName');
+	let category = document.getElementById('eventCategory');
+	let description = document.getElementById('eventDescription');
+	let time = document.getElementById('eventTime');
+	let date = document.getElementById('eventDate');
+	let location = document.getElementById('eventLocation');
+	let contact_phone = document.getElementById('eventPhone');
+	let event_type = document.getElementById('eventType');
+	let university_id = document.getElementById('eventUniversity');
 	let request = true;
 	let tmp =
 	{
