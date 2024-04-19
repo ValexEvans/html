@@ -469,6 +469,10 @@ function joinRSO(RSOID) {
 	};
 	
 	let jsonPayload = JSON.stringify(formData);
+
+	storedUserID = "";
+	rsoID = "";
+	
 	let url = urlBase + '/RegisterIntoRSO.' + extension;
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
