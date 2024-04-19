@@ -38,8 +38,8 @@
         <div id="events" class="feature" style="display: none;">
             <h2>Create Event</h2>
             <form action="submit_event.php" method="post">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br><br>
+                <label for="event_name">Name:</label><br>
+                <input type="text" id="event_name" name="event_name" required><br><br>
 
                 <label for="category">Category:</label><br>
                 <input type="text" id="category" name="category" required><br><br>
@@ -56,11 +56,14 @@
                 <label for="location">Location:</label><br>
                 <input type="text" id="location" name="location" required><br><br>
 
-                <label for="contactPhone">Contact Phone:</label><br>
-                <input type="tel" id="contactPhone" name="contactPhone" required><br><br>
+                <label for="contact_phone">Contact Phone:</label><br>
+                <input type="tel" id="contact_phone" name="contact_phone" required><br><br>
 
-                <label for="visibility">Event Type:</label><br>
-                <select id="visibility" name="visibility" required>
+                <label for="university_id">University ID:</label><br>
+                <input type="number" id="university_id" name="university_id" required><br><br>
+
+                <label for="event_type">Event Type:</label><br>
+                <select id="event_type" name="event_type" required>
                     <option value="Public">Public (Will request SuperAdmin)</option>
                     <option value="Private">Private (University)</option>
                     <option value="RSO">RSO</option>

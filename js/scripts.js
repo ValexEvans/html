@@ -14,6 +14,8 @@ let Location = "";
 let ContactPhone = "";
 let Visibility = "";
 let OrganizerID = 0;
+let UniID = 0;
+
 
 // doLogin will log in a student, admin, or super-admin
 function doLogin() {
@@ -56,7 +58,7 @@ function doLogin() {
 				var userID = jsonObject.UserID; // Assuming you have the user's ID
 				var userRole = jsonObject.Role;
 				localStorage.setItem("userID", userID); // Save user ID to local storage
-				localStorage.setItem("userRole", userRole); 
+				localStorage.setItem("userRole", userRole);
 
 				// Redirect the user based on the role
 				switch (Role) {
@@ -144,6 +146,74 @@ function doRegister() {
 }
 
 
+// {
+//     "organizer_id": 7, // student, addmin, or super admin id
+//     "event_name": "Sample Event",
+//     "category": "Sample Category",
+//     "description": "Sample Description",
+//     "time": "12:00:00",
+//     "date": "2024-04-19",
+//     "location": "Sample Location",
+//     "contact_phone": "1234567890",
+//     "event_type": "RSO",
+//     "university_id": 2,
+//     "request": true
+// }
+
+
+
+
+
+function addEvent() {
+	let storedUserID = localStorage.getItem("userRole"); 
+	let event_name = document.getElementById('event_name');
+	let category = document.getElementById('category');
+	let description = document.getElementById('description');
+	let time = document.getElementById('time');
+	let date = document.getElementById('date');
+	let location = document.getElementById('location');
+	let contact_phone = document.getElementById('contact_phone');
+	let event_type = document.getElementById('event_type');
+	let university_id = document.getElementById('university_id');
+	let request = true;
+	let tmp =
+	{
+		event_name: event_name,
+		category: category,
+		description: description,
+		time: time,
+		date: date,
+		location: location,
+		contact_phone: contact_phone,
+		event_type: event_type,
+		university_id: university_id,
+		request: request,
+	};
+	let jsonPayload = JSON.stringify(tmp);
+
+	let url = urlBase + '/AddEvent.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let events = JSON.parse(xhr.responseText);
+				displayEvents(events);
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+		console.error('Error adding events:', err);
+	}
+}
+
+
+
+
 function fetchEvents() {
 	let EventID = 0;
 	let tmp = { EventID: EventID };
@@ -177,11 +247,10 @@ function displayEvents(events) {
 	});
 }
 
-
 function createEventElement(event) {
 	// if (event.Request != 1) {
-    //     return null;
-    // }
+	//     return null;
+	// }
 
 
 	const eventElement = document.createElement('div');
@@ -229,6 +298,11 @@ function createEventElement(event) {
 
 	return eventElement;
 }
+
+
+
+
+
 
 function submitUniversityForm() {
 	let UniversityName = document.getElementById("universityName").value;
