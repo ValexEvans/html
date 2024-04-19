@@ -625,6 +625,12 @@ function joinRSO(RSOID) {
 //     xhr.send(jsonPayload);
 // }
 
+{/* <select id="eventType" name="eventType" required>
+<option value="Public">Public (Will request SuperAdmin)</option>
+<option value="Private">Private (University)</option>
+<option value="RSO">RSO (Registered Student Organization)</option>
+</select><br><br> */}
+
 function RsoFormSelection() {
     let url = urlBase + '/ListRSO.' + extension;
     let xhr = new XMLHttpRequest();
@@ -635,18 +641,16 @@ function RsoFormSelection() {
         if (this.readyState == 4 && this.status == 200) {
             let response = JSON.parse(xhr.responseText);
             let selectOptions = '<option value="">Select RSO</option>'; // Default option
-            let html = '<table>'; // Start HTML table
+            let html = ''; // Start HTML table
 
             // Iterate through each RSO object in the response
             response.forEach(function (rso) {
-                // Append HTML row for each RSO name
-                html += '<tr><td>' + rso.Name + '</td><td><button onclick="joinRSO(' + rso.RSOID + ')">Join</button></td></tr>';
-
+               
                 // Add option for select element
-                selectOptions += '<option value="' + rso.Name + '">' + rso.Name + '</option>';
+                selectOptions += '<option value="' + rso.Name + '" variable="' rso.RSOID +  '">' + rso.Name + '</option>';
             });
 
-            html += '</table>'; // End HTML table
+            html += ''; // End HTML table
 
             // Update the HTML element with the generated HTML rows
             document.getElementById("rsoSelectionList").innerHTML = html;
