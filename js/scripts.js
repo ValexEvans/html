@@ -187,7 +187,7 @@ function addEvent() {
 		contact_phone: contact_phone,
 		event_type: event_type,
 		university_id: university_id,
-		request: request,
+		request: request
 	};
 	let jsonPayload = JSON.stringify(tmp);
 
