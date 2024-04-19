@@ -18,6 +18,17 @@ if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
     // Assuming the organizer is already logged in and their UserID is available
+    // `EventID` INT AUTO_INCREMENT PRIMARY KEY,
+    // `Name` VARCHAR(255) NOT NULL DEFAULT '' ,
+    // `Category` VARCHAR(255) NOT NULL DEFAULT '' ,
+    // `Description` TEXT,
+    // `Time` TIME,
+    // `Date` DATE,
+    // `Location` VARCHAR(255) NOT NULL DEFAULT '' ,
+    // `ContactPhone` VARCHAR(20) NOT NULL DEFAULT '' ,
+    // `EventType` ENUM('Public', 'Private', 'RSO') NOT NULL,
+	// `Request` BOOL,
+    // `OrganizerID` INT -- not needed
     $OrganizerID = $inData["organizer_id"];
     $EventName = $inData["event_name"];
     $Category = $inData["category"];
@@ -26,10 +37,10 @@ if ($conn->connect_error) {
     $Date = $inData["date"];
     $Location = $inData["location"];
     $ContactPhone = $inData["contact_phone"];
-    $Visibility = $inData["visibility"];
+    $EventType = $inData["event_type"];
 
-    $stmt = $conn->prepare("INSERT INTO Events (Name, Category, Description, Time, Date, Location, ContactPhone, Visibility, OrganizerID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssi", $EventName, $Category, $Description, $Time, $Date, $Location, $ContactPhone, $Visibility, $OrganizerID);
+    $stmt = $conn->prepare("INSERT INTO Events (Name, Category, Description, Time, Date, Location, ContactPhone, EventType, OrganizerID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssssi", $EventName, $Category, $Description, $Time, $Date, $Location, $ContactPhone, $EventType, $OrganizerID);
     $stmt->execute();
 
     // Get the EventID of the newly added event
