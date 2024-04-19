@@ -462,37 +462,30 @@ function addRSO() {
 function joinRSO(RSOID) {
 	let storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
 	let rsoID = String(RSOID); // Convert RSOID to string
-
+	
 	let formData = {
 		UserID: storedUserID,
 		RsoID: rsoID
 	};
-
+	
 	let jsonPayload = JSON.stringify(formData);
 	let url = urlBase + '/RegisterIntoRSO.' + extension;
-	
-
-	// AJAX call to send data to PHP script
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			if (xhr.status === 200) {
-				let response = JSON.parse(xhr.responseText);
-				if (response.error) {
-					// Handle error
-					document.getElementById("joinRSOResult").innerHTML = response.error;
-				} else if (response.info) {
-					// Handle success
-					document.getElementById("joinRSOResult").innerHTML = response.info;
-				}
+				// Request was successful, handle response
+				console.log(xhr.responseText); // Assuming you want to log the response
 			} else {
-				// Handle other status codes
-				document.getElementById("joinRSOResult").innerHTML = "Error:" + xhr.statusText;
+				// Handle errors
+				console.error(xhr.statusText);
 			}
 		}
 	};
+	
 	xhr.send(jsonPayload);
 }
 
