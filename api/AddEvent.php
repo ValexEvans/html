@@ -29,9 +29,10 @@ if ($conn->connect_error) {
     $ContactPhone = $inData["contact_phone"];
     $EventType = $inData["event_type"];
     $UniversityID = $inData["university_id"];
+    $Request = isset($inData["request"]) ? (bool)$inData["request"] : false; // Convert incoming value to boolean
 
-    $stmt = $conn->prepare("INSERT INTO Events (Name, Category, Description, Time, Date, Location, ContactPhone, EventType, OrganizerID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssi", $EventName, $Category, $Description, $Time, $Date, $Location, $ContactPhone, $EventType, $OrganizerID);
+    $stmt = $conn->prepare("INSERT INTO Events (Name, Category, Description, Time, Date, Location, ContactPhone, EventType, OrganizerID, Request) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssssi", $EventName, $Category, $Description, $Time, $Date, $Location, $ContactPhone, $EventType, $OrganizerID, $Request);
     $stmt->execute();
 
     // Get the EventID of the newly added event

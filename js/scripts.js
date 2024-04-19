@@ -175,6 +175,19 @@ function displayEvents(events) {
 	});
 }
 
+
+// `EventID` INT AUTO_INCREMENT PRIMARY KEY,
+// `Name` VARCHAR(255) NOT NULL DEFAULT '' ,
+// `Category` VARCHAR(255) NOT NULL DEFAULT '' ,
+// `Description` TEXT,
+// `Time` TIME,
+// `Date` DATE,
+// `Location` VARCHAR(255) NOT NULL DEFAULT '' ,
+// `ContactPhone` VARCHAR(20) NOT NULL DEFAULT '' ,
+// `EventType` ENUM('Public', 'Private', 'RSO') NOT NULL,
+// `Request` BOOL,
+// `OrganizerID` INT -- not needed
+
 function createEventElement(event) {
 	const eventElement = document.createElement('div');
 	eventElement.classList.add('event');
@@ -207,9 +220,17 @@ function createEventElement(event) {
 	contactElement.textContent = `Contact Phone: ${event.ContactPhone}`;
 	eventElement.appendChild(contactElement);
 
-	const visibilityElement = document.createElement('p');
-	visibilityElement.textContent = `Visibility: ${event.Visibility}`;
-	eventElement.appendChild(visibilityElement);
+	const eventTypeElement = document.createElement('p');
+	eventTypeElement.textContent = `EventType: ${event.EventType}`;
+	eventElement.appendChild(eventTypeElement);
+
+	const requestElement = document.createElement('p');
+	requestElement.textContent = `Request: ${event.Request}`;
+	eventElement.appendChild(requestElement);
+
+	// const organizerIdElement = document.createElement('p');
+	// organizerIdElement.textContent = `OrganizerID: ${event.OrganizerID}`;
+	// eventElement.appendChild(organizerIdElement);
 
 	return eventElement;
 }
