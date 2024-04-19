@@ -179,7 +179,7 @@ function displayEvents(events) {
 
 
 function createEventElement(event) {
-	if (event.Request==0) {
+	if (event.Request != 1) {
         return null;
     }
 
