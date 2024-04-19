@@ -220,6 +220,8 @@ function addEvent() {
 			}
 		};
 		xhr.send(jsonPayload);
+		window.location.reload();
+		clearFormFields();
 	}
 	catch (err) {
 		// console.error('Error adding events:', err);
@@ -355,6 +357,7 @@ function submitUniversityForm() {
 
 				// Optionally, you can redirect the user to the login page after successful registration
 				window.location.reload();
+				clearFormFields();
 			}
 		};
 		xhr.send(jsonPayload);
