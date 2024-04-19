@@ -161,7 +161,22 @@ function doRegister() {
 // }
 
 
-
+function clearFormFields() {
+	// for addEvent
+	document.getElementById("eventName").value = "";
+	document.getElementById("eventCategory").value = "";
+	document.getElementById("eventDescription").value = "";
+	document.getElementById("eventTime").value = "";
+	document.getElementById("eventDate").value = "";
+	document.getElementById("eventLocation").value = "";
+	document.getElementById("eventPhone").value = "";
+	document.getElementById("eventType").value = "";
+	// for submitUniversityForm
+	document.getElementById("universityName").value = "";
+	document.getElementById("location").value = "";
+	document.getElementById("description").value = "";
+	document.getElementById("numberOfStudents").value = "";
+}
 
 
 function addEvent() {
@@ -339,7 +354,7 @@ function submitUniversityForm() {
 				document.getElementById("createUniversityResult").innerHTML = "University added successfully";
 
 				// Optionally, you can redirect the user to the login page after successful registration
-				// window.location.reload();
+				window.location.reload();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -445,7 +460,7 @@ function submitUniversityForm() {
 // 	userRole = "";
 // }
 
-function clearFormFields() {
+function clearSubmitFormFields() {
 	document.getElementById("userFirstName").value = "";
 	document.getElementById("userLastName").value = "";
 	document.getElementById("userLogin").value = "";
@@ -493,7 +508,7 @@ function submitForm(userRole) {
 				if (response.success) {
 					// Data added successfully
 					// document.getElementById("addUserResult").innerHTML = userRole + " added successfully";
-					clearFormFields();
+					clearSubmitFormFields();
 				} else {
 					// Error occurred on the server side
 					//document.getElementById("addUserResult").innerHTML = "Error: " + response.message;
