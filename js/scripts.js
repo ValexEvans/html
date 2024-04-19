@@ -54,7 +54,9 @@ function doLogin() {
 
 				Role = jsonObject.Role;
 				var userID = jsonObject.UserID; // Assuming you have the user's ID
+				var userRole = jsonObject.Role;
 				localStorage.setItem("userID", userID); // Save user ID to local storage
+				localStorage.setItem("userRole", userRole); 
 
 				// Redirect the user based on the role
 				switch (Role) {
@@ -176,19 +178,11 @@ function displayEvents(events) {
 }
 
 
-// `EventID` INT AUTO_INCREMENT PRIMARY KEY,
-// `Name` VARCHAR(255) NOT NULL DEFAULT '' ,
-// `Category` VARCHAR(255) NOT NULL DEFAULT '' ,
-// `Description` TEXT,
-// `Time` TIME,
-// `Date` DATE,
-// `Location` VARCHAR(255) NOT NULL DEFAULT '' ,
-// `ContactPhone` VARCHAR(20) NOT NULL DEFAULT '' ,
-// `EventType` ENUM('Public', 'Private', 'RSO') NOT NULL,
-// `Request` BOOL,
-// `OrganizerID` INT -- not needed
-
 function createEventElement(event) {
+	if(event.Request == NULL){
+		return NULL;
+	}
+
 	const eventElement = document.createElement('div');
 	eventElement.classList.add('event');
 
@@ -623,22 +617,6 @@ function doLogout() {
 	window.location.href = "index.html";
 }
 
-// function switchContent() {
-//     var content1 = document.getElementById('loginForm');
-//     var content2 = document.getElementById('registerForm');
-
-//     if (content1.classList.contains('active')) {
-//         content1.classList.remove('active');
-//         content1.classList.add('inactive');
-//         content2.classList.remove('inactive');
-//         content2.classList.add('active');
-//     } else {
-//         content2.classList.remove('active');
-//         content2.classList.add('inactive');
-//         content1.classList.remove('inactive');
-//         content1.classList.add('active');
-//     }
-// }
 
 function showContent(contentId, event) {
 	event.preventDefault(); // Prevent default behavior of anchor tag
