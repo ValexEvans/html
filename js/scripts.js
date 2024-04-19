@@ -200,14 +200,14 @@ function addEvent() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				let events = JSON.parse(xhr.responseText);
-				displayEvents(events);
+				document.getElementById("createUniversityResult").innerHTML = "Added events successfully";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch (err) {
-		console.error('Error adding events:', err);
+		// console.error('Error adding events:', err);
+		document.getElementById("addEventReval").innerHTML = "Error adding events";
 	}
 }
 
