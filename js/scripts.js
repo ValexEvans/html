@@ -194,7 +194,7 @@ function addEvent() {
 	};
 
 	let jsonPayload = JSON.stringify(tmp);
-	// document.getElementById("addEventTest").innerHTML = jsonPayload;
+	document.getElementById("addEventTest").innerHTML = jsonPayload;
 
 	let url = urlBase + '/AddEvent.' + extension;
 
@@ -216,10 +216,10 @@ function addEvent() {
 		document.getElementById("addEventReval").innerHTML = "Error adding events";
 	}
 
-	setTimeout(function() {
-		window.location.reload();
-		clearFormFields();
-	}, 1000); // 1000 milliseconds = 1 second
+	// setTimeout(function() {
+	// 	window.location.reload();
+	// 	clearFormFields();
+	// }, 1000); // 1000 milliseconds = 1 second
 	
 }
 
