@@ -222,13 +222,14 @@ function addEvent() {
 			}
 		};
 		xhr.send(jsonPayload);
-		//clearFormFields();
+		
 	}
 	catch (err) {
 		// console.error('Error adding events:', err);
 		document.getElementById("addEventReval").innerHTML = "Error adding events";
 	}
-	//window.location.reload();
+	window.location.reload();
+	clearFormFields();
 }
 
 
