@@ -201,7 +201,7 @@ function addEvent() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("createUniversityResult").innerHTML = "Added events successfully";
+				document.getElementById("addEventReval").innerHTML = "Added events successfully";
 			}
 		};
 		xhr.send(jsonPayload);
