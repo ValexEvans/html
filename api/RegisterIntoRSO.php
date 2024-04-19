@@ -8,7 +8,7 @@ $RSOID = $inData["RsoID"];
 $conn = new mysqli("localhost", "PHPUSER", "Val21212@S1n2o3w4w", "DB01");
 
 if ($conn->connect_error) {
-    returnWithError("Connection failed: " . $conn->connect_error);
+    returnWithError($conn->connect_error);
 } else {
     // Check if UserID and RSOID are provided
     if (empty($UserID) || empty($RSOID)) {
