@@ -129,6 +129,7 @@ function doRegister() {
 
 	let jsonPayload = JSON.stringify(userData);
 
+	document.getElementById("rrrrreg").innerHTML = jsonPayload;
 
 	let url = urlBase + '/StudentRegister.' + extension;
 	let xhr = new XMLHttpRequest();
