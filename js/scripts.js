@@ -565,32 +565,40 @@ function addRSO() {
 function joinRSO(RSOID) {
 	let storedUserID = String(localStorage.getItem("userID")); // Retrieve user ID from local storage
 	let rsoID = String(RSOID); // Convert RSOID to string
+	let request = "1"; // it is a request
 
 	let formData = {
 		UserID: storedUserID,
-		RsoID: rsoID
+		RsoID: rsoID,
+		Request: request
 	};
 
+
+
 	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("jsonPayload").innerText = jsonPayload;
+	document.getElementById("createUniversityResult").innerHTML = "";
 
-	storedUserID = "";
-	rsoID = "";
+	// for (let i = 0; i < pictures.length; i++) {
+	//     formData.append("Pictures[]", pictures[i]);
+	// }
 
-	let url = urlBase + '/RegisterIntoRSO.' + extension;
 	let xhr = new XMLHttpRequest();
+	let url = urlBase + '/RegisterIntoRSO.' + extension;
+
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 
-				let jsonObject = JSON.parse(xhr.responseText);
-				let joinRSOInfo = jsonObject.info;
+				document.getElementById("joinRSOResult").innerHTML = "Joined successfully";
 
-				document.getElementById("joinRSOResult").innerHTML = joinRSOInfo;
+				// Optionally, you can redirect the user to the login page after successful registration
+				//window.location.reload();
+				//clearFormFields();
 			}
 		};
-		document.getElementById("testJoinRSO").innerHTML = jsonPayload;
 		xhr.send(jsonPayload);
 	} catch (err) {
 		document.getElementById("joinRSOResult").innerHTML = err.message;
