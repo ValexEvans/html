@@ -647,8 +647,10 @@ function listRsoSelect() {
             response.forEach(function (rso) {
                
                 // Add option for select element
-                selectOptions += '<option value="' + rso.RSOID +  '">' + rso.Name + '</option>';
+                selectOptions += '<option value="' + rso.Name + '" variable="' + rso.RSOID +  '">' + rso.Name + '</option>';
             });
+
+
 
 
 
@@ -677,12 +679,8 @@ function listUniversitySelect() {
             response.forEach(function (rso) {
                
                 // Add option for select element
-                selectOptions += '<option value="' + rso.Name + '" variable="' + rso.UniversityID +  '">' + rso.Name + '</option>';
+                selectOptions += '<option value="' + rso.UniversityID +  '">' + rso.Name + '</option>';
             });
-
-
-
-
 
             // Update the select element with options
             document.getElementById("UniversitySelectionList").innerHTML = selectOptions;
