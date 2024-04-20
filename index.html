@@ -39,12 +39,13 @@
     <div id="root">
         <div class="container">
             <div class="login-container">
-                <h1 class="title">Turntable</h1>
+                <h1 class="title">Event Hub</h1>
                 <div class="form-group active" id="loginForm">
                     <input id="loginName" class="input" type="text" placeholder="Username">
                     <input id="loginPassword" class="input" type="password" placeholder="Password">
                     <button id="loginButton" class="button" onclick="doLogin();">Login</button>
-                    <p class="toggleText">Don't have an account yet? <button onclick="switchContent()">Register</button>
+                    <p class="toggleText">Don't have an account yet? <button class="transparent-button" onclick="switchContent()"
+                            style="direction: none;">Register</button>
                     </p>
                     <span id="loginResult"></span>
                 </div>
@@ -60,7 +61,8 @@
                     <!-- <input class="input" type="text" placeholder="Email"> -->
                     <input id="registerPassword" class="input" type="password" placeholder="Password">
                     <button id="registerButton" class="button" onclick="doRegister();">Register</button>
-                    <p class="toggleText">Already have an account? <button onclick="switchContent()">Login</button></p>
+                    <p class="toggleText">Already have an account? <button class="transparent-button" onclick="switchContent()"
+                            style="direction: none;">Login</button></p>
                     <span id="registerResult"></span>
                 </div>
             </div>

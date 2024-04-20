@@ -27,7 +27,7 @@ body {
     font-size: 30px;
     text-align: center;
     align-items: center;
-    color: rgb(184, 130, 38);
+    color:  #fff;
 }
 
 .form-group {
@@ -62,4 +62,12 @@ body {
 .toggleText {
     align-self: center;
     color: white;
+}
+
+.transparent-button {
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    color: white;
+    /* Add any additional styling you want */
 }
