@@ -209,18 +209,18 @@ function addEvent() {
 			}
 		};
 		xhr.send(jsonPayload);
-		
+
 	}
 	catch (err) {
 		// console.error('Error adding events:', err);
 		document.getElementById("addEventReval").innerHTML = "Error adding events";
 	}
 
-	setTimeout(function() {
+	setTimeout(function () {
 		window.location.reload();
 		clearFormFields();
 	}, 1000); // 1000 milliseconds = 1 second
-	
+
 }
 
 
@@ -309,29 +309,29 @@ function createEventElement(event) {
 	// eventElement.appendChild(organizerIdElement);
 
 	// Add rating input
-    const ratingElement = document.createElement('div');
-    ratingElement.innerHTML = `
+	const ratingElement = document.createElement('div');
+	ratingElement.innerHTML = `
         <label for="event-rating-${event.ID}">Rating:</label>
         <input type="number" id="event-rating-${event.ID}" name="event-rating" min="1" max="5">
     `;
-    eventElement.appendChild(ratingElement);
+	eventElement.appendChild(ratingElement);
 
-    // Add comment input
-    const commentElement = document.createElement('div');
-    commentElement.innerHTML = `
+	// Add comment input
+	const commentElement = document.createElement('div');
+	commentElement.innerHTML = `
         <label for="event-comment-${event.ID}">Comment:</label>
         <textarea id="event-comment-${event.ID}" name="event-comment" rows="4" cols="50"></textarea>
     `;
 
-    eventElement.appendChild(buttonElement);
-	    // Add comment input
-		const buttonElement = document.createElement('div');
-		commentElement.innerHTML = `
-			<button id="event-button-${event.ID}" name="event-button" onclick = "submitOpinion()"></button>
-		`;
-		eventElement.appendChild(commentElement);
+	// eventElement.appendChild(buttonElement);
+	//     // Add comment input
+	// 	const buttonElement = document.createElement('div');
+	// 	commentElement.innerHTML = `
+	// 		<button id="event-button-${event.ID}" name="event-button" onclick = "submitOpinion()"></button>
+	// 	`;
+	// 	eventElement.appendChild(commentElement);
 
-	return buttonElement;
+	// return buttonElement;
 }
 
 
@@ -553,7 +553,7 @@ function addRSO() {
 		UserID: storedUserID
 	};
 
-	
+
 	let jsonPayload = JSON.stringify(formData);
 	document.getElementById("RsoReval").innerHTML = jsonPayload;
 	let xhr = new XMLHttpRequest();
@@ -702,62 +702,62 @@ function joinRSO(RSOID) {
 
 
 function listRsoSelect() {
-    let url = urlBase + '/ListRSO.' + extension;
-    let xhr = new XMLHttpRequest();
+	let url = urlBase + '/ListRSO.' + extension;
+	let xhr = new XMLHttpRequest();
 
-    xhr.open("GET", url, true);
+	xhr.open("GET", url, true);
 
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            let response = JSON.parse(xhr.responseText);
-            let selectOptions = '<option value="">Select RSO</option>'; // Default option
-
-
-            // Iterate through each RSO object in the response
-            response.forEach(function (rso) {
-               
-                // Add option for select element
-                selectOptions += '<option value="' + rso.Name + '" variable="' + rso.RSOID +  '">' + rso.Name + '</option>';
-            });
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			let response = JSON.parse(xhr.responseText);
+			let selectOptions = '<option value="">Select RSO</option>'; // Default option
 
 
+			// Iterate through each RSO object in the response
+			response.forEach(function (rso) {
+
+				// Add option for select element
+				selectOptions += '<option value="' + rso.Name + '" variable="' + rso.RSOID + '">' + rso.Name + '</option>';
+			});
 
 
 
-            // Update the select element with options
-            document.getElementById("rsoSelectionList").innerHTML = selectOptions;
-        }
-    };
 
-    xhr.send();
+
+			// Update the select element with options
+			document.getElementById("rsoSelectionList").innerHTML = selectOptions;
+		}
+	};
+
+	xhr.send();
 }
 
 
 function listUniversitySelect() {
-    let url = urlBase + '/ListUniversities.' + extension;
-    let xhr = new XMLHttpRequest();
+	let url = urlBase + '/ListUniversities.' + extension;
+	let xhr = new XMLHttpRequest();
 
-    xhr.open("GET", url, true);
+	xhr.open("GET", url, true);
 
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            let response = JSON.parse(xhr.responseText);
-            let selectOptions = '<option value="">Select University</option>'; // Default option
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			let response = JSON.parse(xhr.responseText);
+			let selectOptions = '<option value="">Select University</option>'; // Default option
 
 
-            // Iterate through each RSO object in the response
-            response.forEach(function (rso) {
-               
-                // Add option for select element
-                selectOptions += '<option value="' + rso.UniversityID +  '">' + rso.Name + '</option>';
-            });
+			// Iterate through each RSO object in the response
+			response.forEach(function (rso) {
 
-            // Update the select element with options
-            document.getElementById("UniversitySelectionList").innerHTML = selectOptions;
-        }
-    };
+				// Add option for select element
+				selectOptions += '<option value="' + rso.UniversityID + '">' + rso.Name + '</option>';
+			});
 
-    xhr.send();
+			// Update the select element with options
+			document.getElementById("UniversitySelectionList").innerHTML = selectOptions;
+		}
+	};
+
+	xhr.send();
 }
 
 
