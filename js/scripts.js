@@ -331,7 +331,7 @@ function createEventElement(event) {
 		`;
 		eventElement.appendChild(commentElement);
 
-	return eventElement;
+	return buttonElement;
 }
 
 
