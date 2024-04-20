@@ -91,20 +91,14 @@ function doLogin() {
 
 }
 
-// $FirstName = $inData["FirstName"];
-// $LastName = $inData["LastName"];
-// $Login = $inData["Login"];
-// $Password = $inData["Password"];
-// $Role = $inData["Role"];
-// $Name = $inData["UniversityName"];
-// doRegister will register all as a student
+
 
 function clearRegisterFields(){
 	document.getElementById("registerFirstName").value = "";
 	document.getElementById("registerLastName").value = "";
 	document.getElementById("registerLogin").value = "";
 	document.getElementById("registerPassword").value = "";
-	document.getElementById("universityName").value = "";
+	//document.getElementById("universityName").value = "";
 }
 function doRegister() {
 	let registerFirstName = document.getElementById("registerFirstName").value;
@@ -157,8 +151,8 @@ function doRegister() {
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
 	setTimeout(function () {
-		//window.location.reload();
-		//clearFormFields();
+		window.location.reload();
+		clearRegisterFields();
 	}, 2000); // 1000 milliseconds = 1 second
 }
 
