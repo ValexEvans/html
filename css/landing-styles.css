@@ -192,6 +192,7 @@ form input[type="submit"]:hover {
     padding: 20px;
     margin-bottom: 20px;
     width: calc(45%); /* Adjust the width as per your layout */
+    text-align: left;
   }
   
   /* Style for event name */
