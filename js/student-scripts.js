@@ -20,7 +20,7 @@ function joinRSO(RSOID) {
 	// }
 
 	let xhr = new XMLHttpRequest();
-	let url = urlBase + '/RegisterIntoRSO.' + extension;
+	let url = urlBase + '/RegisterRSO.' + extension;
 
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
