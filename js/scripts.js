@@ -90,12 +90,28 @@ function doLogin() {
 	}
 
 }
+
+// $FirstName = $inData["FirstName"];
+// $LastName = $inData["LastName"];
+// $Login = $inData["Login"];
+// $Password = $inData["Password"];
+// $Role = $inData["Role"];
+// $Name = $inData["UniversityName"];
 // doRegister will register all as a student
+
+function clearRegisterFields(){
+	document.getElementById("registerFirstName").value = "";
+	document.getElementById("registerLastName").value = "";
+	document.getElementById("registerLogin").value = "";
+	document.getElementById("registerPassword").value = "";
+	document.getElementById("universityName").value = "";
+}
 function doRegister() {
-	let FirstName = document.getElementById("registerFirstName").value;
-	let LastName = document.getElementById("registerLastName").value;
-	let login = document.getElementById("registerLogin").value;
-	let password = document.getElementById("registerPassword").value;
+	let registerFirstName = document.getElementById("registerFirstName").value;
+	let registerLastName = document.getElementById("registerLastName").value;
+	let registerLogin = document.getElementById("registerLogin").value;
+	let registerPassword = document.getElementById("registerPassword").value;
+	let universityName = document.getElementById("universityName").value;
 	let Role = "Student";
 
 	// var hash = md5(password);
@@ -103,22 +119,18 @@ function doRegister() {
 	document.getElementById("registerResult").innerHTML = "";
 
 	let userData = {
-		FirstName: FirstName,
-		LastName: LastName,
-		login: login,
-		password: password,
-		Role: Role
+		FirstName: registerFirstName,
+		LastName: registerLastName,
+		Login: registerLogin,
+		Password: registerPassword,
+		Role: Role,
+		Name: universityName
 	};
 
 	let jsonPayload = JSON.stringify(userData);
 
-	UserID = 0;
-	FirstName = "";
-	LastName = "";
-	Role = "";
 
-
-	let url = urlBase + '/Register.' + extension;
+	let url = urlBase + '/StudentRegister.' + extension;
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
