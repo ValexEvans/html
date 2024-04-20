@@ -570,7 +570,7 @@ function addRSO() {
 
 
 	let jsonPayload = JSON.stringify(formData);
-	document.getElementById("RsoReval").innerHTML = jsonPayload;
+	// document.getElementById("RsoReval").innerHTML = jsonPayload;
 	let xhr = new XMLHttpRequest();
 	let url = urlBase + '/AddRSO.' + extension;
 
