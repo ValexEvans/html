@@ -15,9 +15,6 @@ function joinRSO(RSOID) {
 	document.getElementById("youKnow").innerText = jsonPayload;
 	document.getElementById("createUniversityResult").innerHTML = "";
 
-	// for (let i = 0; i < pictures.length; i++) {
-	//     formData.append("Pictures[]", pictures[i]);
-	// }
 
 	let xhr = new XMLHttpRequest();
 	let url = urlBase + '/RegisterRSO.' + extension;
@@ -87,7 +84,7 @@ function listRsoSelect() {
             response.forEach(function (rso) {
                
                 // Add option for select element
-                selectOptions += '<option value="' + rso.Name + '" variable="' + rso.RSOID +  '">' + rso.Name + '</option>';
+                selectOptions += '<option value="' + rso.RSOID +  '">' + rso.Name + '</option>';
             });
 
 
