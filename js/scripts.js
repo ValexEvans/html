@@ -110,7 +110,7 @@ function doRegister() {
 
 	// var hash = md5(password);
 
-	document.getElementById("registerResult").innerHTML = "";
+	// document.getElementById("registerResult").innerHTML = "";
 
 	let userData = {
 		FirstName: registerFirstName,
