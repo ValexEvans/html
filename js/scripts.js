@@ -176,7 +176,7 @@ function addEvent() {
 	let eventLocation = document.getElementById('eventLocation').value;
 	let eventPhone = document.getElementById('eventPhone').value;
 	let eventType = document.getElementById('eventType').value;
-	let eventUniversity = document.getElementById('UniversitySelectionList').value;
+	let eventUniversity = document.getElementById('UniversitySelectionList').variable;
 	let request = true;
 
 	let tmp =
