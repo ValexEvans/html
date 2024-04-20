@@ -300,9 +300,9 @@ function createEventElement(event) {
 	eventTypeElement.textContent = `EventType: ${event.EventType}`;
 	eventElement.appendChild(eventTypeElement);
 
-	const requestElement = document.createElement('p');
-	requestElement.textContent = `Request: ${event.Request}`;
-	eventElement.appendChild(requestElement);
+	// const requestElement = document.createElement('p');
+	// requestElement.textContent = `Request: ${event.Request}`;
+	// eventElement.appendChild(requestElement);
 
 	// const organizerIdElement = document.createElement('p');
 	// organizerIdElement.textContent = `OrganizerID: ${event.OrganizerID}`;
@@ -336,6 +336,9 @@ function createEventElement(event) {
 }
 
 
+function submitOpinion(){
+	window.location.reload();
+}
 
 // eventElement.appendChild(buttonElement);
 //     
