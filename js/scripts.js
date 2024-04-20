@@ -322,22 +322,23 @@ function createEventElement(event) {
         <label for="event-comment-${event.ID}">Comment:</label>
         <textarea id="event-comment-${event.ID}" name="event-comment" rows="4" cols="50"></textarea>
     `;
+	eventElement.appendChild(commentElement);
 
-	// eventElement.appendChild(buttonElement);
-	//     // Add comment input
-	// 	const buttonElement = document.createElement('div');
-	// 	commentElement.innerHTML = `
-	// 		<button id="event-button-${event.ID}" name="event-button" onclick = "submitOpinion()"></button>
-	// 	`;
-	// 	eventElement.appendChild(commentElement);
+	// addbutton
+	const buttonElement = document.createElement('div');
+	commentElement.innerHTML = `
+			<button id="event-button-${event.ID}" name="event-button" onclick = "submitOpinion()"></button>
+		`;
+	eventElement.appendChild(buttonElement);
 
-	// return buttonElement;
+
+	return eventElement;
 }
 
 
 
-
-
+// eventElement.appendChild(buttonElement);
+//     
 
 function submitUniversityForm() {
 	let UniversityName = document.getElementById("universityName").value;
