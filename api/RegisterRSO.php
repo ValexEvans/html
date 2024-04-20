@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
     $stmt = $conn->prepare("INSERT INTO Register (UserID, RSOID, Request) VALUES (?, ?, ?)");
-    $stmt->bind_param("ii", $UserID, $RSOID, $Request);
+    $stmt->bind_param("iii", $UserID, $RSOID, $Request);
 
     if ($stmt->execute()) {
         returnWithSuccess("Registration added successfully.");
