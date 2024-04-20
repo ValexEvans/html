@@ -566,15 +566,13 @@ function addRSO() {
 function rsoRequest() {
 	let rsoName = document.getElementById("rsoRequestName").value;
 	var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
-    let request = "1";
 
 	let formData = {
 		Name: rsoName,
-		UserID: storedUserID,
-        Request: request
+		UserID: storedUserID
 	};
 
-	document.getElementById("requestRso").innerHTML = storedUserID;
+	document.getElementById("RsoReval").innerHTML = storedUserID;
 
 	let jsonPayload = JSON.stringify(formData);
 	let xhr = new XMLHttpRequest();
@@ -604,6 +602,7 @@ function rsoRequest() {
 		// Exception occurred
 		document.getElementById("addRsoResult").textContent = "An error occurred. Please try again later.";
 	}
+
 }
 
 function joinRSO(RSOID) {
