@@ -327,7 +327,7 @@ function createEventElement(event) {
 	// addbutton
 	const buttonElement = document.createElement('div');
 	commentElement.innerHTML = `
-			<button id="event-button-${event.ID}" name="event-button" onclick = "submitOpinion()"></button>
+			<button id="event-button-${event.ID}" name="event-button" onclick = "submitOpinion()">Submit</button>
 		`;
 	eventElement.appendChild(buttonElement);
 
