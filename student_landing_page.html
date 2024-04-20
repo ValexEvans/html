@@ -55,7 +55,7 @@
         <div id="rso" class="feature" style="display: none;">
 
             <h2>RSO List</h2>
-            <form>
+            <form action="submit_event.php" method="post">
                 <div id="listRsoResult" class="container">
                     <!-- RSO list will be displayed here -->
                 </div>
@@ -66,7 +66,7 @@
             <form action="submit_event.php" method="post">
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name" required><br><br>
-                <input type="submit" value="Submit" onsubmit="rsoRequest()">
+                <button type="button" onclick="rsoRequest()">Submit</button>
             </form>
 
 
