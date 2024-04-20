@@ -1,3 +1,6 @@
+const urlBase = 'http://143.198.135.118/api';
+const extension = 'php';
+
 function joinRSO(RSOID) {
 	let storedUserID = String(localStorage.getItem("userID")); // Retrieve user ID from local storage
 	let rsoID = String(RSOID); // Convert RSOID to string
