@@ -28,7 +28,7 @@
             <ul>
                 <li><a href="#" onclick="showContent('home', event)">Student Home</a></li>
                 <li><a href="#" onclick="showContent('events', event)">Events</a></li>
-                <li><a href="#" onclick="showContent('rso', event)">RSOs</a></li>
+                <li><a href="#" onclick="showContent('rso', event) ">RSOs</a></li>
                 <li><a href="#" onclick="doLogout()">Logout</a></li>
 
             </ul>
@@ -47,8 +47,8 @@
             <form>
             </form>
 
-            
-                <input type="submit" value="Submit">
+
+            <input type="submit" value="Submit">
             </form>
 
         </div>
@@ -59,7 +59,7 @@
                 <div id="listRsoResult" class="table-container">
                     <!-- RSO list will be displayed here -->
                 </div>
-                
+
             </form>
 
             <h2>Create RSO Request</h2>
@@ -68,7 +68,7 @@
                 <input type="text" id="name" name="name" required><br><br>
                 <input type="submit" value="Submit">
             </form>
-            
+
 
         </div>
     </section>
@@ -96,7 +96,13 @@
     </script>
     <script>
         // Call the fetchEvents function when the page loads
-        window.onload = listRSO();
+        window.onload = function () {
+            setTimeout(listRSOdelay, 3000); // 3000 milliseconds = 3 seconds
+        };
+
+        function listRSOdelay() {
+            listRSO();
+        }
     </script>
 </body>
 
