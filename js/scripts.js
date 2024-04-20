@@ -111,7 +111,7 @@ function doRegister() {
 	let registerLastName = document.getElementById("registerLastName").value;
 	let registerLogin = document.getElementById("registerLogin").value;
 	let registerPassword = document.getElementById("registerPassword").value;
-	let universityName = document.getElementById("universityName").value;
+	let universityName = document.getElementById("UniversitySelectionList").value;
 	let Role = "Student";
 
 	// var hash = md5(password);
@@ -155,6 +155,10 @@ function doRegister() {
 	} catch (err) {
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
+	setTimeout(function () {
+		window.location.reload();
+		//clearFormFields();
+	}, 2000); // 1000 milliseconds = 1 second
 }
 
 
@@ -766,6 +770,33 @@ function listUniversitySelect() {
 
 				// Add option for select element
 				selectOptions += '<option value="' + rso.UniversityID + '">' + rso.Name + '</option>';
+			});
+
+			// Update the select element with options
+			document.getElementById("UniversitySelectionList").innerHTML = selectOptions;
+		}
+	};
+
+	xhr.send();
+}
+
+function listUniversitySelectRegister() {
+	let url = urlBase + '/ListUniversities.' + extension;
+	let xhr = new XMLHttpRequest();
+
+	xhr.open("GET", url, true);
+
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			let response = JSON.parse(xhr.responseText);
+			let selectOptions = '<option value="">Select University</option>'; // Default option
+
+
+			// Iterate through each RSO object in the response
+			response.forEach(function (rso) {
+
+				// Add option for select element
+				selectOptions += '<option value="' + rso.Name + '">' + rso.Name + '</option>';
 			});
 
 			// Update the select element with options
