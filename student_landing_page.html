@@ -64,10 +64,12 @@
 
             <h2>Create RSO Request</h2>
             <form action="submit_event.php" method="post">
-                <label for="rsoRequestName">Name:</label><br>
-                <input type="text" id="rsoRequestName" name="rsoRequestName" required><br><br>
-                <button type="button" onclick="rsoRequest()">Submit</button>
+                <label for="rsoName">Name:</label><br>
+                <input type="text" id="rsoName" name="rsoName" required><br><br>
+                <button type="button" onclick="addRSO()">Submit</button>
             </form>
+            <pre id="RsoReval"></pre>
+            <pre id="addRsoResult"></pre>
 
 
         </div>
