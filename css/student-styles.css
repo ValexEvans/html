@@ -78,3 +78,33 @@ table td:first-child {
     width: 95%;
 }
 
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.rso-button {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.rso-button:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
