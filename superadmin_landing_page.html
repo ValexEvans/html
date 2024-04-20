@@ -31,8 +31,8 @@
     <section class="features">
         <div id="home" class="feature">
             <h2>Current Events</h2>
-            <p>List of Events with information and ability to comment and rate</p>
-            <p>COMMENT & RATE</p>
+            <!-- <p>List of Events with information and ability to comment and rate</p> -->
+            <!-- <p>COMMENT & RATE</p> -->
             <div id="events-container"></div>
         </div>
         <div id="universities" class="feature" style="display: none;">
@@ -78,8 +78,10 @@
                 <label for="userPassword">Password:</label>
                 <input type="text" id="userPassword" required><br><br>
 
-                <label for="userUniversityName">University Name:</label>
-                <input type="text" id="userUniversityName" required><br><br>
+                <label for="UniversitySelectionList">University Name:</label>
+                <select id="UniversitySelectionList" class="input" name="UniversitySelectionList" required>
+                    <!-- RSO list will be displayed here -->
+                </select>
 
                 <button type="button" onclick="submitStudentForm()">Submit as Student</button>
                 <button type="button" onclick="submitAdminForm()">Submit as Admin</button>
@@ -97,6 +99,7 @@
     </footer>
 
     <script>
+        window.onload = listUniversitySelect();
         function submitStudentForm() {
             submitForm("Student");
         }

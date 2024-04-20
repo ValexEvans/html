@@ -508,7 +508,7 @@ function submitForm(userRole) {
 	let userLastName = document.getElementById("userLastName").value;
 	let userLogin = document.getElementById("userLogin").value;
 	let userPassword = document.getElementById("userPassword").value;
-	let userUniversityName = document.getElementById("userUniversityName").value;
+	let userUniversityName = document.getElementById("UniversitySelectionList").value;
 
 	let formData = {
 		FirstName: userFirstName,
