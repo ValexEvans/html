@@ -633,11 +633,7 @@ function joinRSO(RSOID) {
 //     xhr.send(jsonPayload);
 // }
 
-{/* <select id="eventType" name="eventType" required>
-<option value="Public">Public (Will request SuperAdmin)</option>
-<option value="Private">Private (University)</option>
-<option value="RSO">RSO (Registered Student Organization)</option>
-</select><br><br> */}
+
 
 function listRsoSelect() {
     let url = urlBase + '/ListRSO.' + extension;
