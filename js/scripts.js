@@ -530,9 +530,9 @@ function addRSO() {
 		UserID: storedUserID
 	};
 
-	document.getElementById("RsoReval").innerHTML = storedUserID;
-
+	
 	let jsonPayload = JSON.stringify(formData);
+	document.getElementById("RsoReval").innerHTML = jsonPayload;
 	let xhr = new XMLHttpRequest();
 	let url = urlBase + '/AddRSO.' + extension;
 
