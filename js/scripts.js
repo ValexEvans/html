@@ -176,7 +176,7 @@ function addEvent() {
 	let eventLocation = document.getElementById('eventLocation').value;
 	let eventPhone = document.getElementById('eventPhone').value;
 	let eventType = document.getElementById('eventType').value;
-	let eventUniversity = document.getElementById('UniversitySelectionList').variable;
+	let eventUniversity = document.getElementById('UniversitySelectionList').value;
 	let request = true;
 
 	let tmp =
@@ -647,10 +647,8 @@ function listRsoSelect() {
             response.forEach(function (rso) {
                
                 // Add option for select element
-                selectOptions += '<option value="' + rso.Name + '" variable="' + rso.RSOID +  '">' + rso.Name + '</option>';
+                selectOptions += '<option value="' + rso.RSOID +  '">' + rso.Name + '</option>';
             });
-
-
 
 
 
