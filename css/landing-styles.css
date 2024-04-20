@@ -228,3 +228,26 @@ form input[type="submit"]:hover {
     text-transform: capitalize;
   }
   
+  /* Style for event rating and comment */
+.event input[type="number"],
+.event textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for event rating label */
+.event label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style for event comment label */
+.event label[for^="event-comment"] {
+    margin-top: 15px;
+}
