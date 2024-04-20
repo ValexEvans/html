@@ -308,6 +308,22 @@ function createEventElement(event) {
 	// organizerIdElement.textContent = `OrganizerID: ${event.OrganizerID}`;
 	// eventElement.appendChild(organizerIdElement);
 
+	// Add rating input
+    const ratingElement = document.createElement('div');
+    ratingElement.innerHTML = `
+        <label for="event-rating-${event.ID}">Rating:</label>
+        <input type="number" id="event-rating-${event.ID}" name="event-rating" min="1" max="5">
+    `;
+    eventElement.appendChild(ratingElement);
+
+    // Add comment input
+    const commentElement = document.createElement('div');
+    commentElement.innerHTML = `
+        <label for="event-comment-${event.ID}">Comment:</label>
+        <textarea id="event-comment-${event.ID}" name="event-comment" rows="4" cols="50"></textarea>
+    `;
+    eventElement.appendChild(commentElement);
+
 	return eventElement;
 }
 
