@@ -564,7 +564,7 @@ function addRSO() {
 
 
 function rsoRequest() {
-	let rsoName = document.getElementById("rsoName").value;
+	let rsoName = document.getElementById("rsoRequestName").value;
 	var storedUserID = localStorage.getItem("userID"); // Retrieve user ID from local storage
     let request = "1";
 
