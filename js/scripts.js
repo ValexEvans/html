@@ -124,7 +124,7 @@ function doRegister() {
 		Login: registerLogin,
 		Password: registerPassword,
 		Role: Role,
-		Name: universityName
+		UniversityName: universityName
 	};
 
 	let jsonPayload = JSON.stringify(userData);
