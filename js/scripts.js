@@ -148,7 +148,7 @@ function doRegister() {
 				document.getElementById("registerResult").innerHTML = "User registered successfully.";
 
 				// Optionally, you can redirect the user to the login page after successful registration
-				window.location.reload();
+				//window.location.reload();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -156,7 +156,7 @@ function doRegister() {
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
 	setTimeout(function () {
-		window.location.reload();
+		//window.location.reload();
 		//clearFormFields();
 	}, 2000); // 1000 milliseconds = 1 second
 }
