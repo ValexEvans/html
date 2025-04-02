@@ -93,7 +93,7 @@ function doLogin() {
 
 
 
-function clearRegisterFields(){
+function clearRegisterFields() {
 	document.getElementById("registerFirstName").value = "";
 	document.getElementById("registerLastName").value = "";
 	document.getElementById("registerLogin").value = "";
@@ -347,7 +347,7 @@ function createEventElement(event) {
 }
 
 
-function submitOpinion(){
+function submitOpinion() {
 	window.location.reload();
 }
 
