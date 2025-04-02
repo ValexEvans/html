@@ -4,17 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Event Website</title>
-    <link rel="stylesheet" href="/css/index-styles.css">
-    <style>
-        .active {
-            display: block;
-        }
+    <title>Event Hub - College Events</title>
+    <link rel="stylesheet" href="css/index-styles.css">
+</head>
 
-        .inactive {
-            display: none;
-        }
-    </style>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <h1 class="title">Event Hub</h1>
+
+            <div class="form-group active" id="loginForm">
+                <input id="loginName" class="input" type="text" placeholder="Username" autocomplete="username">
+                <input id="loginPassword" class="input" type="password" placeholder="Password"
+                    autocomplete="current-password">
+
+                <div class="button-container">
+                    <button id="loginButton" class="button" onclick="doLogin();">Login</button>
+                </div>
+
+                <p class="toggleText">Don't have an account yet?
+                    <button class="transparent-button" onclick="switchContent()">Register</button>
+                </p>
+                <span id="loginResult"></span>
+            </div>
+
+            <div class="form-group inactive" id="registerForm">
+                <select id="UniversitySelectionList" class="input" name="UniversitySelectionList" required>
+                    <!-- Universities will be populated by JavaScript -->
+                </select>
+
+                <input id="registerFirstName" class="input" type="text" placeholder="First Name">
+                <input id="registerLastName" class="input" type="text" placeholder="Last Name">
+                <input id="registerLogin" class="input" type="text" placeholder="Username" autocomplete="username">
+                <input id="registerPassword" class="input" type="password" placeholder="Password"
+                    autocomplete="new-password">
+
+                <div class="button-container">
+                    <button id="registerButton" class="button" onclick="doRegister();">Register</button>
+                </div>
+
+                <p class="toggleText">Already have an account?
+                    <button class="transparent-button" onclick="switchContent()">Login</button>
+                </p>
+                <span id="registerResult"></span>
+                <span id="rrrrreg"></span>
+            </div>
+        </div>
+    </div>
+
     <script>
         function switchContent() {
             var content1 = document.getElementById('loginForm');
@@ -32,49 +69,16 @@
                 content1.classList.add('active');
             }
         }
+
+        // Execute when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            listUniversitySelectRegister();
+        });
     </script>
-</head>
-
-<body>
-    <div id="root">
-        <div class="container">
-            <div class="login-container">
-                <h1 class="title">Event Hub</h1>
-                <div class="form-group active" id="loginForm">
-                    <input id="loginName" class="input" type="text" placeholder="Username">
-                    <input id="loginPassword" class="input" type="password" placeholder="Password">
-                    <button id="loginButton" class="button" onclick="doLogin();">Login</button>
-                    <p class="toggleText">Don't have an account yet? <button class="transparent-button" onclick="switchContent()"
-                            style="direction: none;">Register</button>
-                    </p>
-                    <span id="loginResult"></span>
-                </div>
-                <div class="form-group inactive" id="registerForm">
-
-                    <select id="UniversitySelectionList" class="input" name="UniversitySelectionList" required>
-                        <!-- RSO list will be displayed here -->
-                    </select>
-
-                    <input id="registerFirstName" class="input" type="text" placeholder="First Name">
-                    <input id="registerLastName" class="input" type="text" placeholder="Last Name">
-                    <input id="registerLogin" class="input" type="text" placeholder="Username">
-                    <!-- <input class="input" type="text" placeholder="Email"> -->
-                    <input id="registerPassword" class="input" type="password" placeholder="Password">
-                    <button id="registerButton" class="button" onclick="doRegister();">Register</button>
-                    <p class="toggleText">Already have an account? <button class="transparent-button" onclick="switchContent()"
-                            style="direction: none;">Login</button></p>
-                    <span id="registerResult"></span>
-                    <span id="rrrrreg"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="root"></div>
     <script src="./js/scripts.js"></script>
     <script>
         window.onload = listUniversitySelectRegister();
     </script>
-
 </body>
 
 </html>

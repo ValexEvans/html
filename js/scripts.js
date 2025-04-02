@@ -25,6 +25,11 @@ function doLogin() {
 	Role = "";
 
 	let login = document.getElementById("loginName").value;
+	if (login) {
+		document.getElementById('loginResult').textContent = "Logging in...";
+	} else {
+		document.getElementById('loginResult').textContent = "Please enter username";
+	}
 	let password = document.getElementById("loginPassword").value;
 	//	var hash = md5( password );
 
